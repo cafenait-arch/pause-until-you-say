@@ -1,10 +1,3 @@
-/*
- * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
- * - Keep every @import in this top block, above @theme and the rest of the file. Install an
- *   npm package before @importing its CSS. Never @import a remote URL (web fonts, CDN CSS): the
- *   build resolves @import from the filesystem. Load those with a <link> in the head() of
- *   src/routes/__root.tsx and name the family in a --font-* token in @theme inline below.
- */
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -13,10 +6,6 @@
 
 /*
  * Design system definition.
- *
- * The design lives in this file: oklch color tokens on the shadcn variables
- * (--background, --foreground, --primary, --secondary, --muted, --accent, ...) plus
- * new tokens as needed, font tokens, and custom styles and animations.
  *
  * The @theme inline block maps CSS custom properties to Tailwind utility
  * classes (e.g. --color-primary -> bg-primary, text-primary).
@@ -37,7 +26,6 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
-  --color-arena: var(--arena);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -74,40 +62,39 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --arena: oklch(1 0 0);
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
+  --radius: 0.375rem;
+  --background: oklch(0.13 0.005 20);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.16 0.006 20);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.58 0.22 25);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.24 0.006 20);
+  --muted-foreground: oklch(0.62 0.01 20);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.8 0.12 210);
+  --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --border: oklch(0.28 0.008 20);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
 }
 
 .dark {
@@ -153,5 +140,186 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    letter-spacing: 0;
   }
+}
+
+:root {
+  --fighter-yuki: oklch(0.83 0.13 93);
+  --fighter-kashimo: oklch(0.77 0.1 180);
+  --kashimo-electric: oklch(0.82 0.15 195);
+  --energy-core: oklch(1 0 0);
+  --kashimo-sound: oklch(0.55 0.25 300);
+  --kashimo-sound-light: oklch(0.8 0.14 300);
+  --kashimo-radiation: oklch(0.78 0.2 65);
+  --kashimo-radiation-edge: oklch(0.62 0.25 30);
+  --cut-edge: oklch(0.99 0 0);
+  --cut-void: oklch(0.05 0 0);
+  --cut-glow: oklch(0.78 0.17 330);
+  --kashimo-amber: oklch(0.74 0.19 55);
+  --gavel-handle: oklch(0.4 0.07 60);
+  --gavel-head: oklch(0.55 0.09 60);
+  --kashimo-staff: oklch(0.57 0.19 35);
+  --kashimo-grip: oklch(0.24 0.015 90);
+  --kashimo-gold: oklch(0.79 0.13 95);
+  --pachinko-background: oklch(1 0 0);
+  --pachinko-ink: oklch(0.22 0.01 175);
+  --pachinko-cabinet: oklch(0.93 0.025 175);
+  --fighter-choso: oklch(0.44 0.16 26);
+  --fighter-yuji: oklch(0.22 0 0);
+  --fighter-gojo: oklch(0.62 0.19 260);
+  --jackpot-energy: oklch(0.79 0.16 165);
+  --jackpot-cyan: oklch(0.84 0.13 190);
+  --jackpot-light: oklch(0.97 0.04 170);
+  --fighter-hakari: oklch(0.63 0.17 150);
+  --garuda-bone: oklch(0.86 0.015 100);
+  --garuda-shade: oklch(0.66 0.015 100);
+  --garuda-edge: oklch(0.28 0.012 250);
+  --garuda-spike: oklch(0.69 0.075 270);
+  --garuda-eye: oklch(0.61 0.21 28);
+  --divergent-blue: oklch(0.5 0.25 262);
+  --divergent-cyan: oklch(0.79 0.15 215);
+  --divergent-light: oklch(0.93 0.08 207);
+  --divergent-edge: oklch(0.27 0.1 259);
+  --blackhole-ink: oklch(0.08 0 0);
+  --blackhole-light: oklch(0.97 0 0);
+  --blackhole-haze: oklch(0.55 0 0);
+  --blood-deep: oklch(0.35 0.15 22);
+  --blood-bright: oklch(0.58 0.23 25);
+  --blood-glow: oklch(0.8 0.12 25);
+  --blood-poison: oklch(0.62 0.2 330);
+  --metal-light: oklch(0.97 0 0);
+  --metal-dark: oklch(0.55 0.01 250);
+  --fighter-toji: oklch(0.36 0.055 160);
+  --fighter-sukuna: oklch(0.88 0.04 40);
+  --sukuna-mark: oklch(0.5 0.2 27);
+  --toji-metal: oklch(0.78 0.012 110);
+  --toji-edge: oklch(0.19 0.015 150);
+  --toji-grip: oklch(0.38 0.12 20);
+  --toji-inventory: oklch(0.43 0.09 325);
+  --toji-inventory-edge: oklch(0.26 0.055 325);
+  /* Yorozu: metal líquido negro, brilho branco, armadura de inseto clara */
+  --yz-ink: oklch(0.08 0 0);
+  --yz-sheen: oklch(0.96 0 0);
+  --yz-armor: oklch(0.9 0.008 250);
+  --yz-armor-edge: oklch(0.14 0 0);
+  --yz-wing: oklch(0.93 0.03 200 / 0.45);
+  /* Aflição Tripla: céu claro e vagens dourado-oliva */
+  --yz-domain-sky: oklch(0.96 0.004 250);
+  --yz-domain-haze: oklch(0.86 0.008 250);
+  --yz-domain-pod: oklch(0.7 0.085 100);
+  --yz-domain-pod-light: oklch(0.86 0.07 100);
+  --yz-domain-pod-dark: oklch(0.42 0.05 110);
+  --yz-domain-pod-ink: oklch(0.17 0.02 110);
+}
+.fighter-swatch { display: inline-block; width: 12px; height: 12px; flex-shrink: 0; border: 1px solid var(--border); }
+.fighter-yuki { background: var(--fighter-yuki); }
+.fighter-choso { background: var(--fighter-choso); }
+.fighter-yuji { background: var(--fighter-yuji); }
+.fighter-gojo { background: var(--fighter-gojo); }
+.fighter-hakari { background: var(--fighter-hakari); }
+.fighter-kashimo { background: var(--fighter-kashimo); }
+.fighter-toji { background: var(--fighter-toji); }
+.fighter-sukuna { background: var(--fighter-sukuna); outline: 1px solid var(--sukuna-mark); }
+.fighter-yorozu { background: oklch(0.12 0 0); outline: 1px solid oklch(0.92 0 0); }
+.fighter-kenjaku { background: oklch(0.1 0 0); outline: 1px solid oklch(0.7 0 0); }
+.fighter-higuruma { background: oklch(0.45 0.08 70); }
+.fighter-nanami { background: oklch(0.34 0.04 255); outline: 1px solid oklch(0.82 0.08 90); }
+.fighter-megumi { background: oklch(0.25 0.05 270); outline: 1px solid oklch(0.62 0.13 265); }
+
+.landscape-toolbar { display: none; }
+
+/* Side rails reserve thumb space; the complete arena stays between them. */
+@media (orientation: landscape) and (max-height: 600px) and (max-width: 1180px) {
+  .battle-page.battle-active {
+    position: fixed;
+    inset: 0;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+    padding: 0;
+    touch-action: none;
+    user-select: none;
+    --left-rail: 12px;
+    --right-rail: 12px;
+    --safe-left: env(safe-area-inset-left, 0px);
+    --safe-right: env(safe-area-inset-right, 0px);
+  }
+  .battle-active.battle-manual { --left-rail: 140px; --right-rail: 224px; }
+  .battle-active .battle-layout { max-width: none; margin: 0; }
+  .battle-active .battle-setup,
+  .battle-active .battle-log { display: none; }
+  .battle-active .landscape-toolbar {
+    display: flex;
+    position: absolute;
+    top: max(8px, env(safe-area-inset-top, 0px));
+    left: calc(8px + var(--safe-left));
+    gap: 4px;
+    margin: 0;
+    z-index: 2;
+  }
+  .landscape-toolbar button { width: 38px; height: 38px; }
+  .battle-active .battle-hud {
+    position: absolute;
+    top: max(8px, env(safe-area-inset-top, 0px));
+    left: calc(max(140px, var(--left-rail)) + var(--safe-left));
+    right: calc(var(--right-rail) + var(--safe-right));
+    margin: 0;
+    gap: 16px;
+    font-size: 10px;
+  }
+  .battle-hud > div { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3px; }
+  .battle-hud > div > * { margin: 0; }
+  .battle-hud > div > p:not(:nth-child(2)) { display: none; }
+  .battle-hud > div > div:not(:first-child) { height: 3px; }
+  .battle-active .battle-arena {
+    position: absolute;
+    top: calc(68px + env(safe-area-inset-top, 0px));
+    bottom: max(10px, env(safe-area-inset-bottom, 0px));
+    left: calc(var(--left-rail) + var(--safe-left));
+    right: calc(var(--right-rail) + var(--safe-right));
+    margin: 0;
+    border: 0;
+    background: var(--background);
+  }
+  .battle-arena canvas { width: 100%; height: 100%; object-fit: contain; }
+  .battle-active .battle-controls,
+  .battle-active .controls-movement { display: contents; }
+  .battle-active .controls-status { display: none; }
+  .battle-active .battle-stick {
+    position: absolute;
+    width: 116px;
+    height: 116px;
+    left: calc(12px + var(--safe-left));
+    bottom: max(28px, env(safe-area-inset-bottom, 0px));
+    margin: 0;
+  }
+  .battle-active .battle-actions {
+    position: absolute;
+    right: calc(10px + var(--safe-right));
+    bottom: max(10px, env(safe-area-inset-bottom, 0px));
+    width: 204px;
+    margin: 0;
+    gap: 6px;
+  }
+  .battle-actions button { height: 56px; border-radius: 8px; }
+  .battle-actions button:only-child,
+  .battle-actions button:nth-child(3) { height: 42px; }
+  .battle-active .battle-abilities {
+    position: absolute;
+    top: max(10px, env(safe-area-inset-top, 0px));
+    bottom: calc(126px + env(safe-area-inset-bottom, 0px));
+    right: calc(10px + var(--safe-right));
+    width: 204px;
+    margin: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 48px;
+    align-content: end;
+    gap: 6px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+  }
+  .battle-abilities button { height: 48px; border-radius: 8px; gap: 2px; padding: 4px 6px; }
+  .battle-abilities button > span { font-size: 10px; flex-shrink: 0; }
 }
