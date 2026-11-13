@@ -134,7 +134,7 @@ function Index() {
         )}
 
         <div className="battle-arena relative border border-border bg-card">
-          <canvas aria-label="Arena de combate" ref={canvas} width={W} height={H} className="block h-auto w-full" />
+          <canvas aria-label="Arena de combate" ref={canvas} width={W} height={H} className="block h-auto w-full bg-arena" />
           {!battle && <div className="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground">selecione os lutadores e aperte Lutar</div>}
           {battle?.winner && (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-background/70">
