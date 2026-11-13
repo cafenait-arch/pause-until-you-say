@@ -1,0 +1,155 @@
+{
+  "arena": {
+    "width": 900,
+    "height": 520,
+    "fighterSize": 30,
+    "timeScale": 0.55,
+    "domainRadius": 240
+  },
+  "pachinko": {
+    "jackpotEnergy": 6000,
+    "jackpotMs": 12000,
+    "durationMs": 13000,
+    "chanceBonusPerRound": 0.4,
+    "modes": [
+      {
+        "name": "Arco-íris",
+        "probability": 0.03,
+        "chance": 1
+      },
+      {
+        "name": "Reach Ouro",
+        "probability": 0.2,
+        "chance": 0.25
+      },
+      {
+        "name": "Reach Verde",
+        "probability": 0.4,
+        "chance": 0.05
+      },
+      {
+        "name": "Normal",
+        "probability": 0.37,
+        "chance": 0.0041841
+      }
+    ],
+    "indicatorPerHit": 0.25,
+    "indicatorChanceBonus": 0.02
+  },
+  "blackHoleTrigger": {
+    "angerHpFraction": 0.25,
+    "maxHpRatio": 0.2,
+    "opponentHpRatioMult": 2
+  },
+  "domainGravity": {
+    "stunMs": 1300,
+    "radius": 80
+  },
+  "healing": {
+    "rates": {
+      "rct": {
+        "hp": 5,
+        "en": 15
+      },
+      "halfCurse": {
+        "hp": 5,
+        "en": 10
+      },
+      "curse": {
+        "hp": 5,
+        "en": 5
+      }
+    },
+    "hpPerSecond": 60,
+    "startHpRatio": 0.6,
+    "stopHpRatio": 0.85,
+    "startEnergyRatio": 0.3,
+    "stopEnergyRatio": 0.1,
+    "safeDistance": 170,
+    "projectileDistance": 260,
+    "orbDistance": 90,
+    "spiritDistance": 120,
+    "stopDamping": 0.7,
+    "stationarySpeed": 0.5,
+    "messageCooldownMs": 5000
+  },
+  "blackFlash": {
+    "damageMult": 9,
+    "energyRestoreRatio": 0.15,
+    "defaultChance": 0.03
+  },
+  "defense": {
+    "energyCostRatio": 0.75,
+    "strongHitDamage": 60,
+    "weakHitDamage": 20,
+    "lowHpRatio": 0.5,
+    "reserveEnergyRatio": 0.15,
+    "highEnergyRatio": 0.5,
+    "maxBlockChance": 0.95,
+    "blockReflexMult": 0.85,
+    "maxMeleeReflex": 1.2,
+    "dodgeChance": 0.26,
+    "guardChance": 0.32,
+    "dodgeSpeed": 3.2,
+    "dodgeDurationMs": 260,
+    "dodgeCooldownMs": 650,
+    "guardCooldownMs": 520,
+    "guardDamageMult": 0.3,
+    "guardKnockback": 2.2,
+    "blockDamageMult": 0.4
+  },
+  "offensiveDash": {
+    "cost": 20,
+    "damageMult": 1.6,
+    "speedMult": 4,
+    "durationMs": 420,
+    "cooldown": 2600,
+    "cooldownJitterMs": 1400,
+    "chance": 0.012,
+    "minRange": 80,
+    "maxRange": 300,
+    "hitPadding": 16,
+    "knockback": 6,
+    "stunMs": 180
+  },
+  "movement": {
+    "friction": 0.92,
+    "wallDamage": 25,
+    "wallMinSpeed": 5,
+    "wallBounce": 0.4,
+    "acceleration": 0.15,
+    "dodgeAcceleration": 0.35,
+    "dashSpeedMult": 2.16,
+    "dashCooldown": 1100,
+    "dashJitterMs": 900,
+    "dashChance": 0.02,
+    "dashMinRange": 90,
+    "dashMaxRange": 420,
+    "retreatSpeedMult": 3.4,
+    "retreatCooldown": 1300,
+    "retreatJitterMs": 700,
+    "retreatChance": 0.06,
+    "meleePadding": 14,
+    "meleeKnockback": 2.5,
+    "missKnockback": 3
+  },
+  "ai": {
+    "thinkMs": 260,
+    "aggressionBase": 0.6,
+    "aggressionJitter": 0.8,
+    "threatDistance": 300,
+    "dodgeSpeedMin": 3.4,
+    "dodgeSpeedMult": 1.5,
+    "dodgeDurationMs": 300,
+    "dodgeNearReflexMult": 1.2,
+    "dodgeFarReflexMult": 0.6
+  },
+  "energy": {
+    "costMult": 0.945,
+    "minPower": 0.45,
+    "aiRepeatBaseMs": 700,
+    "aiRepeatIntelMs": 1600,
+    "aiReserveRatio": 0.18,
+    "aiFinisherHpRatio": 0.2
+  }
+}

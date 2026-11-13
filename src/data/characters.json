@@ -1,0 +1,970 @@
+[
+  {
+    "id": "choso",
+    "name": "Choso",
+    "color": "#9b1c1c",
+    "range": "media-longa",
+    "preferredDistance": 300,
+    "hp": 1160,
+    "energy": 1200,
+    "energyRegen": 18,
+    "speed": 2.6,
+    "reflex": 0.7,
+    "taijutsu": {
+      "damage": 20,
+      "style": "contra-ataque defensivo",
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 650
+      },
+      "hitRange": 44
+    },
+    "abilities": [
+      {
+        "id": "scale",
+        "name": "Escama Vermelha",
+        "type": "buff"
+      },
+      {
+        "id": "pierce",
+        "name": "Sangue Perfurante",
+        "type": "beam"
+      },
+      {
+        "id": "nova",
+        "name": "Supernova",
+        "type": "orbs"
+      },
+      {
+        "id": "plasma",
+        "name": "Jato de Plasma",
+        "type": "plasmaJet"
+      },
+      {
+        "id": "scaleStack",
+        "name": "Fluxo das Escamas Vermelhas: Pilha",
+        "type": "buffPlus"
+      },
+      {
+        "id": "meteor",
+        "name": "Meteorito de Sangue",
+        "type": "bloodMeteor"
+      },
+      {
+        "id": "cutting",
+        "name": "Exorcismo Cortante",
+        "type": "bloodSlash"
+      },
+      {
+        "id": "blade",
+        "name": "Lâmina de Sangue",
+        "type": "bloodBlade"
+      }
+    ],
+    "blackFlashChance": 0.03,
+    "nature": "halfCurse",
+    "passives": [
+      {
+        "id": "poisonBlood",
+        "name": "Sangue Venenoso",
+        "description": "Sangue que penetra em humanos causa 5 de dano por segundo durante 8s"
+      }
+    ],
+    "intelligence": 0.85
+  },
+  {
+    "id": "yuji",
+    "name": "Yuji Itadori",
+    "color": "#1a1a1a",
+    "range": "curta",
+    "preferredDistance": 30,
+    "hp": 1400,
+    "energy": 700,
+    "energyRegen": 14,
+    "speed": 3,
+    "reflex": 0.85,
+    "taijutsu": {
+      "damage": 45,
+      "style": "pressão agressiva em combo",
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 380
+      },
+      "hitRange": 44
+    },
+    "abilities": [
+      {
+        "id": "fist",
+        "name": "Punho Divergente",
+        "type": "fist"
+      },
+      {
+        "id": "pierce",
+        "name": "Sangue Perfurante",
+        "type": "beam"
+      },
+      {
+        "id": "dismantle",
+        "name": "Desmantelar",
+        "type": "slash"
+      },
+      {
+        "id": "simple",
+        "name": "Domínio Simples",
+        "type": "simpleDomain"
+      },
+      {
+        "id": "domain",
+        "name": "Expansão de Domínio",
+        "type": "domain",
+        "ignoresSimple": true,
+        "damage": 500,
+        "cost": 200,
+        "affectsHeavenly": true,
+        "timing": {
+          "prepMs": 0,
+          "launchMs": 700,
+          "speedMult": 1,
+          "impactMs": 0,
+          "recoveryMs": 0,
+          "cooldownMs": 20000
+        }
+      }
+    ],
+    "blackFlashChance": 0.09,
+    "rct": true,
+    "intelligence": 0.65
+  },
+  {
+    "id": "gojo",
+    "name": "Satoru Gojo",
+    "color": "#3b82f6",
+    "range": "variada",
+    "preferredDistance": 200,
+    "hp": 1500,
+    "energy": 1500,
+    "energyRegen": 16,
+    "speed": 3.5,
+    "reflex": 0.95,
+    "passives": [
+      {
+        "id": "sixEyes",
+        "name": "Seis Olhos",
+        "description": "Reduz o custo de energia de todas as técnicas e da cura",
+        "costMult": 0.25
+      }
+    ],
+    "rangeModes": {
+      "distances": [
+        22,
+        200,
+        360
+      ],
+      "weights": [
+        0.35,
+        0.35,
+        0.3
+      ],
+      "minSwitchMs": 2500,
+      "switchJitterMs": 3000
+    },
+    "taijutsu": {
+      "damage": 28,
+      "style": "técnica refinada e esquiva",
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 420
+      },
+      "hitRange": 44
+    },
+    "abilities": [
+      {
+        "id": "infinity",
+        "name": "Ilimitado",
+        "type": "infinity"
+      },
+      {
+        "id": "simple",
+        "name": "Domínio Simples",
+        "type": "simpleDomain"
+      },
+      {
+        "id": "blue",
+        "name": "Azul",
+        "type": "blue"
+      },
+      {
+        "id": "red",
+        "name": "Vermelho",
+        "type": "red"
+      },
+      {
+        "id": "purple",
+        "name": "Vazio Roxo",
+        "type": "purple"
+      },
+      {
+        "id": "domain",
+        "name": "Vazio Ilimitado",
+        "type": "domain",
+        "damage": 0,
+        "cost": 1300,
+        "overloadMs": 2500,
+        "affectsHeavenly": true,
+        "timing": {
+          "prepMs": 0,
+          "launchMs": 900,
+          "speedMult": 1,
+          "impactMs": 0,
+          "recoveryMs": 0,
+          "cooldownMs": 25000
+        }
+      }
+    ],
+    "blackFlashChance": 0.055,
+    "rct": true,
+    "intelligence": 0.95
+  },
+  {
+    "id": "yuki",
+    "name": "Yuki Tsukumo",
+    "color": "#e5c65b",
+    "range": "curta",
+    "preferredDistance": 30,
+    "hp": 1000,
+    "energy": 1200,
+    "energyRegen": 16,
+    "speed": 3.1,
+    "reflex": 0.85,
+    "taijutsu": {
+      "damage": 50,
+      "stunMs": 350,
+      "style": "Fúria Estelar",
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 500
+      },
+      "hitRange": 44
+    },
+    "companion": {
+      "name": "Garuda",
+      "hp": 500,
+      "damage": 30,
+      "whipDamage": 45,
+      "projectileDamage": 65,
+      "speed": 7,
+      "cooldown": 1800,
+      "initialCooldownMs": 600,
+      "whipDurationMs": 350,
+      "projectileDurationMs": 1400,
+      "meleeRange": 65,
+      "whipRange": 180,
+      "hitRadius": 28
+    },
+    "abilities": [
+      {
+        "id": "star",
+        "name": "Fúria Estelar",
+        "type": "starRage"
+      },
+      {
+        "id": "garudaMass",
+        "name": "Garuda · Massa Virtual",
+        "type": "garudaMass"
+      },
+      {
+        "id": "blackHole",
+        "name": "BURACO NEGRO",
+        "type": "blackHole"
+      },
+      {
+        "id": "simple",
+        "name": "Domínio Simples",
+        "type": "simpleDomain"
+      }
+    ],
+    "blackFlashChance": 0.03,
+    "rct": true,
+    "passives": [
+      {
+        "id": "efficientMass",
+        "name": "Massa Virtual Eficiente",
+        "costMult": 0.4
+      }
+    ],
+    "intelligence": 0.8
+  },
+  {
+    "id": "yorozu",
+    "name": "Yorozu",
+    "color": "#0b0b0b",
+    "outline": "#e4e4e7",
+    "range": "media",
+    "preferredDistance": 120,
+    "hp": 1000,
+    "energy": 1200,
+    "energyRegen": 16,
+    "speed": 3.0,
+    "reflex": 0.85,
+    "taijutsu": {
+      "damage": 28,
+      "style": "Armadura de Inseto · combos e armas construídas",
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 460
+      },
+      "hitRange": 44
+    },
+    "abilities": [
+      {
+        "id": "construct",
+        "name": "Construção",
+        "type": "construct"
+      },
+      {
+        "id": "metal",
+        "name": "Metal Líquido",
+        "type": "liquidMetal"
+      },
+      {
+        "id": "armor",
+        "name": "Armadura de Inseto",
+        "type": "insectArmor"
+      },
+      {
+        "id": "wings",
+        "name": "Asas de Inseto",
+        "type": "insectWings"
+      },
+      {
+        "id": "sphere",
+        "name": "Esfera Verdadeira",
+        "type": "perfectSphere"
+      },
+      {
+        "id": "domain",
+        "name": "Aflição Tripla",
+        "type": "domain",
+        "yorozuDomain": true,
+        "affectsHeavenly": true
+      }
+    ],
+    "blackFlashChance": 0.03,
+    "intelligence": 0.85,
+    "passives": [
+      {
+        "id": "construction",
+        "name": "Construção",
+        "description": "Toda a matéria das técnicas nasce da energia amaldiçoada"
+      }
+    ]
+  },
+  {
+    "id": "hakari",
+    "name": "Kinji Hakari",
+    "color": "#16a34a",
+    "range": "curta",
+    "preferredDistance": 30,
+    "hp": 1100,
+    "energy": 850,
+    "energyRegen": 15,
+    "speed": 3.2,
+    "reflex": 0.85,
+    "damageMult": 1.15,
+    "taijutsu": {
+      "damage": 30,
+      "style": "Energia Amaldiçoada Áspera",
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 420
+      },
+      "hitRange": 44
+    },
+    "abilities": [
+      {
+        "id": "domain",
+        "name": "Aposta da Morte Privada",
+        "type": "pachinko",
+        "cost": 200,
+        "timing": {
+          "prepMs": 0,
+          "launchMs": 900,
+          "speedMult": 1,
+          "impactMs": 0,
+          "recoveryMs": 0,
+          "cooldownMs": 18000,
+          "durationMs": 13000
+        }
+      },
+      {
+        "id": "doors",
+        "name": "Portas do Hakari",
+        "type": "doors"
+      },
+      {
+        "id": "ball",
+        "name": "Bola de Reserva",
+        "type": "reserveBall"
+      }
+    ],
+    "blackFlashChance": 0.03,
+    "passives": [
+      {
+        "id": "jackpotIndicator",
+        "name": "🎰 Indicador de Jackpot",
+        "description": "Dentro da Expansão de Domínio, acertar o oponente enche o indicador e melhora a tentativa de Jackpot"
+      }
+    ],
+    "intelligence": 0.75
+  },
+  {
+    "id": "kashimo",
+    "name": "Hajime Kashimo",
+    "color": "#67c9bd",
+    "outline": "#e5d174",
+    "range": "curta",
+    "preferredDistance": 35,
+    "hp": 1050,
+    "energy": 1000,
+    "energyRegen": 17,
+    "speed": 3.5,
+    "reflex": 0.92,
+    "rct": true,
+    "taijutsu": {
+      "damage": 34,
+      "style": "Energia Amaldiçoada Elétrica",
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 370
+      },
+      "hitRange": 44
+    },
+    "blackFlashChance": 0.03,
+    "abilities": [
+      {
+        "id": "electric",
+        "name": "Energia Amaldiçoada Elétrica",
+        "type": "electricEnergy"
+      },
+      {
+        "id": "discharge",
+        "name": "Descarga Elétrica",
+        "type": "discharge"
+      },
+      {
+        "id": "shockwave",
+        "name": "Onda Sonora",
+        "type": "soundwave"
+      },
+      {
+        "id": "staffShot",
+        "name": "Raio pelo Bastão",
+        "type": "staffElectric"
+      },
+      {
+        "id": "amber",
+        "name": "Besta Mítica Âmbar",
+        "type": "amber"
+      },
+      {
+        "id": "electromagnetic",
+        "name": "Ondas Eletromagnéticas",
+        "type": "electromagnetic"
+      },
+      {
+        "id": "wicker",
+        "name": "Cesta Vime Oca",
+        "type": "hollowWicker"
+      }
+    ],
+    "weapon": {
+      "id": "staff",
+      "name": "Bastão Amaldiçoado",
+      "durability": 400,
+      "blockChance": 0.5,
+      "visualScale": 0.5,
+      "damage": 34
+    },
+    "intelligence": 0.8
+  },
+  {
+    "id": "kenjaku",
+    "name": "Kenjaku",
+    "color": "#0a0a0a",
+    "outline": "#9ca3af",
+    "range": "media",
+    "preferredDistance": 170,
+    "hp": 1500,
+    "energy": 1650,
+    "energyRegen": 18,
+    "speed": 3.1,
+    "reflex": 0.9,
+    "rct": true,
+    "taijutsu": {
+      "damage": 30,
+      "style": "combate experiente com reforço de energia",
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 420
+      },
+      "hitRange": 44
+    },
+    "blackFlashChance": 0.04,
+    "abilities": [
+      {
+        "id": "spirits",
+        "name": "Manipulação de Espíritos Amaldiçoados",
+        "type": "curseSpirits"
+      },
+      {
+        "id": "uzumaki",
+        "name": "Uzumaki",
+        "type": "uzumaki"
+      },
+      {
+        "id": "gravity",
+        "name": "Sistema Antigravidade",
+        "type": "gravity"
+      },
+      {
+        "id": "domain",
+        "name": "Profusão do Útero",
+        "type": "domain",
+        "gravity": true,
+        "damage": 550,
+        "cost": 300,
+        "affectsHeavenly": true,
+        "timing": {
+          "prepMs": 0,
+          "launchMs": 900,
+          "speedMult": 1,
+          "impactMs": 0,
+          "recoveryMs": 0,
+          "cooldownMs": 22000
+        }
+      },
+      {
+        "id": "wicker",
+        "name": "Cesta Vime Oca",
+        "type": "hollowWicker"
+      }
+    ],
+    "intelligence": 1.3
+  },
+  {
+    "id": "toji",
+    "name": "Toji Fushiguro",
+    "color": "#244638",
+    "outline": "#aeb8ac",
+    "range": "curta",
+    "preferredDistance": 28,
+    "hp": 1350,
+    "energy": 0,
+    "energyRegen": 0,
+    "speed": 4.7,
+    "reflex": 1.25,
+    "nature": "human",
+    "blackFlashChance": 0,
+    "taijutsu": {
+      "damage": 85,
+      "stunMs": 180,
+      "style": "Restrição Celestial",
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 310
+      },
+      "hitRange": 44
+    },
+    "weapon": {
+      "id": "invertedSpear",
+      "name": "Lança Invertida do Céu",
+      "durability": 1100,
+      "damage": 130,
+      "blockChance": 0.95
+    },
+    "passives": [
+      {
+        "id": "heavenlyRestriction",
+        "name": "Restrição Celestial",
+        "description": "Zero EA · domínios ainda o atingem"
+      },
+      {
+        "id": "inventorySpirit",
+        "name": "Espírito Amaldiçoado Inventário"
+      },
+      {
+        "id": "heightenedSenses",
+        "name": "Sentidos Aguçados"
+      }
+    ],
+    "abilities": [
+      {
+        "id": "chain",
+        "name": "Correntes das Mil Milhas",
+        "type": "tojiChain"
+      },
+      {
+        "id": "chainSpear",
+        "name": "Corrente + Lança",
+        "type": "chainSpear"
+      }
+    ],
+    "intelligence": 0.85
+  },
+  {
+    "id": "sukuna",
+    "name": "Ryomen Sukuna",
+    "color": "#f4d4c9",
+    "outline": "#b91c1c",
+    "range": "media",
+    "preferredDistance": 150,
+    "hp": 2350,
+    "energy": 2800,
+    "energyRegen": 24,
+    "speed": 4.7,
+    "reflex": 1.25,
+    "rct": true,
+    "blackFlashChance": 0.06,
+    "taijutsu": {
+      "damage": 60,
+      "stunMs": 160,
+      "style": "Rei das Maldições",
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 320
+      },
+      "hitRange": 44
+    },
+    "passives": [
+      {
+        "id": "kingOfCurses",
+        "name": "Rei das Maldições",
+        "description": "O mais rápido e com os melhores reflexos"
+      }
+    ],
+    "abilities": [
+      {
+        "id": "dismantle",
+        "name": "Desmantelar",
+        "type": "slash"
+      },
+      {
+        "id": "net",
+        "name": "Desmantelar · Rede",
+        "type": "dismantleNet"
+      },
+      {
+        "id": "cleave",
+        "name": "Clivar",
+        "type": "cleave"
+      },
+      {
+        "id": "fuga",
+        "name": "Chama Divina",
+        "type": "fuga"
+      },
+      {
+        "id": "world",
+        "name": "Corte que Divide o Mundo",
+        "type": "worldSlash"
+      },
+      {
+        "id": "simple",
+        "name": "Domínio Simples",
+        "type": "simpleDomain"
+      },
+      {
+        "id": "wicker",
+        "name": "Cesta Vime Oca",
+        "type": "hollowWicker"
+      },
+      {
+        "id": "domain",
+        "name": "Santuário Malevolente",
+        "type": "domain",
+        "shrine": true,
+        "affectsHeavenly": true
+      }
+    ],
+    "intelligence": 1.3
+  },
+  {
+    "id": "higuruma",
+    "name": "Hiromi Higuruma",
+    "color": "#8b5a2b",
+    "range": "curta",
+    "preferredDistance": 45,
+    "hp": 850,
+    "energy": 1000,
+    "energyRegen": 15,
+    "speed": 2.9,
+    "reflex": 0.85,
+    "intelligence": 0.9,
+    "taijutsu": {
+      "damage": 55,
+      "style": "Martelo (arma)",
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 600
+      },
+      "hitRange": 44
+    },
+    "abilities": [
+      {
+        "id": "gavelGrow",
+        "name": "Aumentar Martelo",
+        "type": "gavelGrow"
+      },
+      {
+        "id": "gavelExtend",
+        "name": "Martelo Alongado",
+        "type": "gavelExtend"
+      },
+      {
+        "id": "gavelThrow",
+        "name": "Arremesso de Martelo",
+        "type": "gavelThrow"
+      },
+      {
+        "id": "domain",
+        "name": "Sentença Mortal",
+        "type": "domain",
+        "trial": true,
+        "cost": 250,
+        "affectsHeavenly": true,
+        "timing": {
+          "prepMs": 0,
+          "launchMs": 900,
+          "speedMult": 1,
+          "impactMs": 0,
+          "recoveryMs": 0,
+          "cooldownMs": 24000,
+          "durationMs": 6000
+        }
+      }
+    ],
+    "blackFlashChance": 0.03,
+    "passives": [
+      {
+        "id": "judgeman",
+        "name": "Judgeman",
+        "description": "Shikigami juiz que acompanha Higuruma e dita os vereditos do julgamento"
+      }
+    ]
+  },
+  {
+    "id": "nanami",
+    "name": "Kento Nanami",
+    "color": "#2c3e57",
+    "outline": "#d6c08a",
+    "range": "curta",
+    "preferredDistance": 30,
+    "hp": 1050,
+    "energy": 750,
+    "energyRegen": 12,
+    "speed": 3.6,
+    "reflex": 1.1,
+    "nature": "human",
+    "blackFlashChance": 0.06,
+    "blackFlashMult": 2.5,
+    "intelligence": 1.05,
+    "taijutsu": {
+      "damage": 60,
+      "stunMs": 200,
+      "style": "Cutelo",
+      "hitRange": 46,
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 360
+      }
+    },
+    "passives": [
+      {
+        "id": "ratio",
+        "name": "Técnica da Proporção 7:3",
+        "description": "Divide o alvo em 10 partes; o ponto 7:3 recebe dano muito maior"
+      },
+      {
+        "id": "cleaver",
+        "name": "Cutelo",
+        "description": "Golpes cortantes combinados com a Proporção"
+      },
+      {
+        "id": "physique",
+        "name": "Físico de Feiticeiro de 1º Grau",
+        "description": "Força, velocidade, resistência e reflexos acima do comum"
+      },
+      {
+        "id": "intellect",
+        "name": "Inteligência de Combate",
+        "description": "Analisa o oponente e escolhe o momento certo de cada técnica"
+      }
+    ],
+    "abilities": [
+      {
+        "id": "ratio",
+        "name": "Técnica da Proporção (7:3)",
+        "type": "ratio"
+      },
+      {
+        "id": "collapse",
+        "name": "Colapso",
+        "type": "collapse"
+      },
+      {
+        "id": "overtime",
+        "name": "Horas Extras",
+        "type": "buff"
+      }
+    ],
+    "weapon": {
+      "id": "cleaver",
+      "name": "Cutelo",
+      "durability": 800,
+      "damage": 62,
+      "blockChance": 0.55,
+      "visualScale": 0.35
+    }
+  },
+  {
+    "id": "megumi",
+    "name": "Megumi Fushiguro",
+    "color": "#1b2340",
+    "outline": "#5b7fd6",
+    "range": "media",
+    "preferredDistance": 150,
+    "hp": 950,
+    "energy": 850,
+    "energyRegen": 15,
+    "speed": 3.1,
+    "reflex": 0.85,
+    "nature": "human",
+    "intelligence": 1.1,
+    "taijutsu": {
+      "damage": 30,
+      "style": "taijutsu mediano, sem armas",
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 440
+      },
+      "hitRange": 44
+    },
+    "blackFlashChance": 0.03,
+    "passives": [
+      {
+        "id": "tenShadows",
+        "name": "Técnica das Dez Sombras",
+        "description": "Usa a própria sombra para se esconder, guardar e retirar objetos, se mover e invocar ou esconder Shikigamis"
+      }
+    ],
+    "abilities": [
+      {
+        "id": "shadow",
+        "name": "Mergulho nas Sombras",
+        "type": "mgShadow"
+      },
+      {
+        "id": "dog",
+        "name": "Cão Divino: Totalidade",
+        "type": "mgDog"
+      },
+      {
+        "id": "frog",
+        "name": "Sapo",
+        "type": "mgFrog"
+      },
+      {
+        "id": "nue",
+        "name": "Nue",
+        "type": "mgNue"
+      },
+      {
+        "id": "rabbit",
+        "name": "Fuga do Coelho",
+        "type": "mgRabbit"
+      },
+      {
+        "id": "elephant",
+        "name": "Elefante Máximo",
+        "type": "mgElephant"
+      },
+      {
+        "id": "mahoraga",
+        "name": "Mahoraga",
+        "type": "mgMahoraga"
+      },
+      {
+        "id": "domain",
+        "name": "Jardim das Sombras Justapostas",
+        "type": "domain",
+        "chimera": true,
+        "cost": 400,
+        "damage": 35,
+        "stunMs": 250,
+        "tickMs": 1300,
+        "affectsHeavenly": true,
+        "timing": {
+          "prepMs": 0,
+          "launchMs": 900,
+          "speedMult": 1,
+          "impactMs": 0,
+          "recoveryMs": 0,
+          "cooldownMs": 28000,
+          "durationMs": 9000
+        }
+      }
+    ]
+  }
+]

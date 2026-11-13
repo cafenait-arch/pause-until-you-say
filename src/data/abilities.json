@@ -1,0 +1,1315 @@
+{
+  "choso": {
+    "scale": {
+      "damage": 0,
+      "cost": 50,
+      "once": true,
+      "mult": {
+        "damage": 1.3,
+        "speed": 1.4,
+        "reflex": 1.25
+      },
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 0
+      }
+    },
+    "pierce": {
+      "damage": 300,
+      "costPerTick": 10,
+      "tickMs": 333,
+      "warmupMs": 300,
+      "turnSpeed": 0.09,
+      "hitRadius": 4,
+      "poison": {
+        "damage": 5,
+        "tickMs": 1000,
+        "durationMs": 1000
+      },
+      "damagePerTick": 100,
+      "timing": {
+        "prepMs": 250,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 5000,
+        "rangePx": 310,
+        "durationMs": 1000
+      }
+    },
+    "nova": {
+      "damage": 40,
+      "cost": 65,
+      "count": 5,
+      "stunMs": 900,
+      "hitRadius": 32,
+      "poison": {
+        "damage": 5,
+        "tickMs": 1000,
+        "durationMs": 8000
+      },
+      "timing": {
+        "prepMs": 500,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 7000,
+        "durationMs": 9000
+      }
+    },
+    "simple": {
+      "cost": 75,
+      "durationMs": 2500,
+      "cooldown": 6000,
+      "capacity": 1000,
+      "delayMs": 100
+    },
+    "plasma": {
+      "damage": 300,
+      "cost": 160,
+      "tickMs": 250,
+      "turnSpeed": 0.01,
+      "hitRadius": 48,
+      "knockback": 8,
+      "poison": {
+        "damage": 5,
+        "tickMs": 1000,
+        "durationMs": 5000
+      },
+      "timing": {
+        "prepMs": 600,
+        "launchMs": 900,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 9000,
+        "durationMs": 2200
+      }
+    },
+    "scaleStack": {
+      "damage": 0,
+      "cost": 120,
+      "once": true,
+      "mult": {
+        "damage": 1.6,
+        "speed": 1.8,
+        "reflex": 1.5
+      },
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 0
+      }
+    },
+    "meteor": {
+      "damage": 90,
+      "cost": 40,
+      "speed": 20,
+      "projectileLifeMs": 1600,
+      "hitRadius": 9,
+      "stunMs": 200,
+      "poison": {
+        "damage": 5,
+        "tickMs": 1000,
+        "durationMs": 8000
+      },
+      "timing": {
+        "prepMs": 300,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 2500
+      }
+    },
+    "cutting": {
+      "damage": 160,
+      "cost": 80,
+      "speed": 8,
+      "count": 4,
+      "projectileLifeMs": 1800,
+      "hitRadius": 12,
+      "poison": {
+        "damage": 5,
+        "tickMs": 1000,
+        "durationMs": 8000
+      },
+      "timing": {
+        "prepMs": 500,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 5500
+      }
+    },
+    "blade": {
+      "damage": 55,
+      "cost": 60,
+      "poison": {
+        "damage": 5,
+        "tickMs": 1000,
+        "durationMs": 8000
+      },
+      "timing": {
+        "prepMs": 350,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 12000,
+        "durationMs": 8000
+      }
+    }
+  },
+  "yuji": {
+    "fist": {
+      "damage": 160,
+      "cost": 20,
+      "stunMs": 700,
+      "knockback": 14,
+      "timing": {
+        "prepMs": 150,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 2500
+      },
+      "hitRange": 44
+    },
+    "pierce": {
+      "damage": 300,
+      "costPerTick": 10,
+      "tickMs": 333,
+      "warmupMs": 300,
+      "turnSpeed": 0.009,
+      "hitRadius": 4,
+      "damagePerTick": 100,
+      "timing": {
+        "prepMs": 250,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 7000,
+        "rangePx": 280,
+        "durationMs": 1000
+      }
+    },
+    "simple": {
+      "cost": 75,
+      "capacity": 1000,
+      "timing": {
+        "prepMs": 100,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 6000,
+        "durationMs": 2500
+      }
+    },
+    "dismantle": {
+      "damagePerUnit": 50,
+      "costPerUnit": 25,
+      "maxUnits": 4,
+      "speed": 9,
+      "projectileLifeMs": 1500,
+      "timing": {
+        "prepMs": 200,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 1800
+      }
+    }
+  },
+  "gojo": {
+    "infinity": {
+      "damage": 0,
+      "cost": 25,
+      "timing": {
+        "prepMs": 100,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 5000,
+        "durationMs": 2500
+      }
+    },
+    "simple": {
+      "cost": 75,
+      "capacity": 1000,
+      "timing": {
+        "prepMs": 100,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 6000,
+        "durationMs": 2500
+      }
+    },
+    "blue": {
+      "damage": 250,
+      "cost": 75,
+      "speed": 1.6,
+      "pullRadius": 200,
+      "pullForce": 0.22,
+      "hitRadius": 26,
+      "stunMs": 500,
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 4000,
+        "durationMs": 6000
+      }
+    },
+    "red": {
+      "damage": 500,
+      "cost": 125,
+      "speed": 21,
+      "projectileLifeMs": 4000,
+      "knockback": 14,
+      "stunMs": 450,
+      "timing": {
+        "prepMs": 500,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 5000
+      }
+    },
+    "purple": {
+      "damage": 800,
+      "cost": 0,
+      "speed": 22.4,
+      "projectileLifeMs": 2500,
+      "timing": {
+        "prepMs": 300,
+        "launchMs": 1200,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 0
+      }
+    }
+  },
+  "yuki": {
+    "star": {
+      "damagePerUnit": 5,
+      "costPerUnit": 13,
+      "targetDamage": 200,
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 0
+      },
+      "hitRange": 44
+    },
+    "blackHole": {
+      "once": true,
+      "hitkill": true,
+      "damage": 9999,
+      "consumeAllEnergy": true,
+      "cost": 0,
+      "timing": {
+        "prepMs": 400,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 0,
+        "durationMs": 1500
+      }
+    },
+    "simple": {
+      "cost": 75,
+      "capacity": 1000,
+      "timing": {
+        "prepMs": 100,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 6000,
+        "durationMs": 2500
+      }
+    },
+    "garudaMass": {
+      "cost": 65,
+      "damage": 250,
+      "timing": {
+        "prepMs": 350,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 8500,
+        "durationMs": 6500
+      }
+    }
+  },
+  "yorozu": {
+    "construct": {
+      "damagePerUnit": 22,
+      "costPerUnit": 10.4,
+      "maxUnits": 5,
+      "speed": 8,
+      "projectileLifeMs": 1600,
+      "timing": {
+        "prepMs": 200,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 1500,
+        "durationMs": 6000
+      }
+    },
+    "metal": {
+      "cost": 44,
+      "reserveEnergy": 250,
+      "moldIntervalMs": 600,
+      "forms": {
+        "tentacles": {
+          "name": "Tentáculos de Metal",
+          "type": "metalTentacles",
+          "damage": 90,
+          "cost": 22.4,
+          "speed": 8,
+          "projectileLifeMs": 1300,
+          "count": 4,
+          "timing": {
+            "prepMs": 250,
+            "launchMs": 0,
+            "speedMult": 1,
+            "impactMs": 0,
+            "recoveryMs": 0,
+            "cooldownMs": 3000,
+            "rangePx": 420
+          }
+        },
+        "cocoon": {
+          "name": "Casulo de Metal",
+          "type": "metalCocoon",
+          "cost": 12,
+          "timing": {
+            "prepMs": 0,
+            "launchMs": 0,
+            "speedMult": 1,
+            "impactMs": 0,
+            "recoveryMs": 0,
+            "cooldownMs": 3500,
+            "durationMs": 2000
+          }
+        },
+        "chain": {
+          "name": "Correntes Metálicas",
+          "type": "metalChain",
+          "damage": 60,
+          "cost": 16,
+          "speed": 9,
+          "hitRadius": 9,
+          "knockback": 7,
+          "stunMs": 380,
+          "turnSpeed": 0.08,
+          "timing": {
+            "prepMs": 200,
+            "launchMs": 0,
+            "speedMult": 1,
+            "impactMs": 0,
+            "recoveryMs": 0,
+            "cooldownMs": 3200,
+            "rangePx": 480,
+            "durationMs": 1500
+          }
+        },
+        "pchain": {
+          "name": "Correntes Perfurantes",
+          "type": "piercingChain",
+          "damage": 110,
+          "cost": 28,
+          "speed": 13,
+          "hitRadius": 7,
+          "knockback": 3,
+          "stunMs": 260,
+          "turnSpeed": 0.06,
+          "count": 2,
+          "timing": {
+            "prepMs": 250,
+            "launchMs": 0,
+            "speedMult": 1,
+            "impactMs": 0,
+            "recoveryMs": 0,
+            "cooldownMs": 5200,
+            "rangePx": 520,
+            "durationMs": 1300
+          }
+        },
+        "cage": {
+          "name": "Gaiola Metálica",
+          "type": "metalCage",
+          "damage": 40,
+          "cost": 32,
+          "radius": 40,
+          "timing": {
+            "prepMs": 300,
+            "launchMs": 0,
+            "speedMult": 1,
+            "impactMs": 0,
+            "recoveryMs": 0,
+            "cooldownMs": 9000,
+            "rangePx": 300,
+            "durationMs": 2200
+          }
+        },
+        "spikes": {
+          "name": "Espinhos Metálicos",
+          "type": "metalSpikes",
+          "damage": 120,
+          "cost": 24,
+          "radius": 58,
+          "warmupMs": 380,
+          "stunMs": 300,
+          "knockback": 7,
+          "timing": {
+            "prepMs": 200,
+            "launchMs": 0,
+            "speedMult": 1,
+            "impactMs": 0,
+            "recoveryMs": 0,
+            "cooldownMs": 4200,
+            "rangePx": 360,
+            "durationMs": 900
+          }
+        },
+        "plates": {
+          "name": "Placas Metálicas",
+          "type": "metalPlates",
+          "cost": 20,
+          "count": 3,
+          "timing": {
+            "prepMs": 0,
+            "launchMs": 0,
+            "speedMult": 1,
+            "impactMs": 0,
+            "recoveryMs": 0,
+            "cooldownMs": 8000,
+            "durationMs": 5000
+          }
+        },
+        "remote": {
+          "name": "Manipulação Remota",
+          "type": "remoteMetal",
+          "damage": 30,
+          "cost": 28,
+          "speed": 6,
+          "tickMs": 550,
+          "timing": {
+            "prepMs": 250,
+            "launchMs": 0,
+            "speedMult": 1,
+            "impactMs": 0,
+            "recoveryMs": 0,
+            "cooldownMs": 9000,
+            "rangePx": 600,
+            "durationMs": 5000
+          }
+        },
+        "blades": {
+          "name": "Lâminas Metálicas",
+          "type": "metalBlades",
+          "damage": 100,
+          "cost": 22.4,
+          "speed": 10,
+          "hitRadius": 10,
+          "count": 5,
+          "timing": {
+            "prepMs": 250,
+            "launchMs": 0,
+            "speedMult": 1,
+            "impactMs": 0,
+            "recoveryMs": 0,
+            "cooldownMs": 3600,
+            "rangePx": 500,
+            "durationMs": 1100
+          }
+        },
+        "multi": {
+          "name": "Múltiplas Construções",
+          "type": "multiConstruct",
+          "damage": 150,
+          "cost": 36,
+          "speed": 14,
+          "radius": 130,
+          "warmupMs": 450,
+          "count": 6,
+          "timing": {
+            "prepMs": 300,
+            "launchMs": 0,
+            "speedMult": 1,
+            "impactMs": 0,
+            "recoveryMs": 0,
+            "cooldownMs": 7000,
+            "rangePx": 420,
+            "durationMs": 1400
+          }
+        }
+      },
+      "timing": {
+        "prepMs": 250,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 1000
+      }
+    },
+    "armor": {
+      "cost": 80,
+      "mult": {
+        "damage": 1.45,
+        "speed": 1.3,
+        "reflex": 1.15
+      },
+      "hp": 550,
+      "timing": {
+        "prepMs": 600,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 16000
+      }
+    },
+    "wings": {
+      "cost": 48,
+      "mult": {
+        "damage": 1,
+        "speed": 1.35,
+        "reflex": 1.1
+      },
+      "timing": {
+        "prepMs": 150,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 12000,
+        "durationMs": 7000
+      }
+    },
+    "sphere": {
+      "cost": 180,
+      "hitkill": true,
+      "damage": 1000,
+      "speed": 2.2,
+      "projectileLifeMs": 6500,
+      "hitRadius": 20,
+      "turnSpeed": 0.03,
+      "timing": {
+        "prepMs": 300,
+        "launchMs": 2000,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 18000
+      }
+    },
+    "domain": {
+      "damage": 240,
+      "cost": 160,
+      "timing": {
+        "prepMs": 300,
+        "launchMs": 900,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 20000,
+        "durationMs": 7000
+      }
+    }
+  },
+  "hakari": {
+    "doors": {
+      "cost": 40,
+      "impactDamage": 70,
+      "pushDamage": 35,
+      "blockDurationMs": 2600,
+      "impactStunMs": 350,
+      "pushStunMs": 380,
+      "comboStunMs": 450,
+      "knockback": 13,
+      "comboSpeedMult": 4,
+      "comboDurationMs": 500,
+      "timing": {
+        "prepMs": 350,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 2600,
+        "durationMs": 650
+      },
+      "hitRange": 320
+    },
+    "ball": {
+      "damage": 30,
+      "cost": 8,
+      "speed": 11,
+      "projectileLifeMs": 1400,
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 0
+      }
+    }
+  },
+  "kashimo": {
+    "electric": {
+      "damage": 20,
+      "stunMs": 140,
+      "maxCharges": 6,
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 0
+      }
+    },
+    "discharge": {
+      "damage": 240,
+      "cost": 50,
+      "maxUnits": 3,
+      "stunMs": 550,
+      "timing": {
+        "prepMs": 350,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 0
+      }
+    },
+    "shockwave": {
+      "damage": 150,
+      "cost": 50,
+      "hitRadius": 18,
+      "stunMs": 150,
+      "knockback": 3,
+      "materialDamage": 70,
+      "timing": {
+        "prepMs": 500,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 4200,
+        "rangePx": 420,
+        "durationMs": 1500
+      },
+      "tickMs": 250,
+      "turnSpeed": 0.02
+    },
+    "staffShot": {
+      "damage": 100,
+      "cost": 35,
+      "speed": 14,
+      "projectileLifeMs": 900,
+      "stunMs": 250,
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 3500,
+        "rangePx": 400
+      }
+    },
+    "amber": {
+      "cost": 125,
+      "once": true,
+      "mult": {
+        "damage": 1.8,
+        "speed": 1.65,
+        "reflex": 1.15
+      },
+      "selfDestruct": true,
+      "timing": {
+        "prepMs": 400,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 0,
+        "durationMs": 35000
+      }
+    },
+    "electromagnetic": {
+      "damage": 210,
+      "cost": 43,
+      "speed": 10,
+      "projectileLifeMs": 1100,
+      "count": 9,
+      "hitRadius": 10,
+      "materialDamage": 90,
+      "timing": {
+        "prepMs": 500,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 2300,
+        "rangePx": 520
+      }
+    },
+    "wicker": {
+      "cost": 60,
+      "capacity": 1000,
+      "timing": {
+        "prepMs": 100,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 7000,
+        "durationMs": 3000
+      }
+    }
+  },
+  "kenjaku": {
+    "spirits": {
+      "cost": 0,
+      "maxActive": 4,
+      "summonCount": 2,
+      "criticalSummonCount": 1,
+      "initialCooldownMs": 500,
+      "grades": [
+        {
+          "name": "Grau 4",
+          "count": 17,
+          "hp": 30,
+          "damage": 6,
+          "speed": 2.6,
+          "cooldown": 700,
+          "uzumakiPower": 10
+        },
+        {
+          "name": "Grau 3",
+          "count": 10,
+          "hp": 60,
+          "damage": 10,
+          "speed": 2.4,
+          "cooldown": 700,
+          "uzumakiPower": 20
+        },
+        {
+          "name": "Grau 2",
+          "count": 8,
+          "hp": 100,
+          "damage": 16,
+          "speed": 2.2,
+          "cooldown": 700,
+          "uzumakiPower": 35
+        },
+        {
+          "name": "Grau 1",
+          "count": 5,
+          "hp": 180,
+          "damage": 20,
+          "speed": 2.1,
+          "cooldown": 700,
+          "uzumakiPower": 60
+        },
+        {
+          "name": "Grau Especial",
+          "count": 1,
+          "hp": 900,
+          "damage": 100,
+          "speed": 30,
+          "cooldown": 500,
+          "uzumakiPower": 150
+        }
+      ],
+      "timing": {
+        "prepMs": 350,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 1800,
+        "durationMs": 14000
+      }
+    },
+    "uzumaki": {
+      "cost": 150,
+      "damage": 100,
+      "consumeFraction": 0.5,
+      "consumeFieldSpirits": true,
+      "speed": 8.5,
+      "stunMs": 400,
+      "specialStunMs": 900,
+      "knockback": 12,
+      "projectileLifeMs": 2400,
+      "timing": {
+        "prepMs": 300,
+        "launchMs": 600,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 12000
+      }
+    },
+    "gravity": {
+      "damage": 80,
+      "cost": 90,
+      "radius": 85,
+      "slowMult": 0.55,
+      "stunMs": 120,
+      "timing": {
+        "prepMs": 350,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 7000,
+        "durationMs": 2000
+      }
+    },
+    "wicker": {
+      "cost": 60,
+      "capacity": 1000,
+      "timing": {
+        "prepMs": 100,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 7000,
+        "durationMs": 3000
+      }
+    }
+  },
+  "toji": {
+    "chain": {
+      "cost": 0,
+      "damage": 100,
+      "speed": 11.5,
+      "projectileLifeMs": 1200,
+      "hitRadius": 12,
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 2600
+      }
+    },
+    "chainSpear": {
+      "cost": 0,
+      "damage": 230,
+      "speed": 10,
+      "projectileLifeMs": 1200,
+      "hitRadius": 14,
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 4200
+      }
+    }
+  },
+  "sukuna": {
+    "dismantle": {
+      "damagePerUnit": 90,
+      "costPerUnit": 18,
+      "maxUnits": 6,
+      "speed": 12,
+      "projectileLifeMs": 1500,
+      "knockback": 5,
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 1300
+      }
+    },
+    "net": {
+      "damage": 200,
+      "cost": 85,
+      "speed": 7,
+      "projectileLifeMs": 1800,
+      "hitRadius": 110.4,
+      "knockback": 8,
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 7000
+      }
+    },
+    "cleave": {
+      "damage": 120,
+      "cost": 55,
+      "hitRadius": 90,
+      "knockback": 12,
+      "stunMs": 300,
+      "timing": {
+        "prepMs": 350,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 3500
+      }
+    },
+    "fuga": {
+      "damage": 450,
+      "cost": 180,
+      "speed": 20,
+      "projectileLifeMs": 2200,
+      "hitRadius": 22,
+      "knockback": 14,
+      "timing": {
+        "prepMs": 300,
+        "launchMs": 1500,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 16000
+      }
+    },
+    "world": {
+      "damage": 9999,
+      "hitkill": true,
+      "cost": 380,
+      "speed": 20,
+      "projectileLifeMs": 1600,
+      "hitRadius": 8,
+      "timing": {
+        "prepMs": 500,
+        "launchMs": 1800,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 30000
+      }
+    },
+    "simple": {
+      "cost": 75,
+      "capacity": 1000,
+      "timing": {
+        "prepMs": 100,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 6000,
+        "durationMs": 2500
+      }
+    },
+    "wicker": {
+      "cost": 60,
+      "capacity": 1000,
+      "timing": {
+        "prepMs": 100,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 7000,
+        "durationMs": 3000
+      }
+    },
+    "domain": {
+      "damage": 40,
+      "tickMs": 150,
+      "cost": 300,
+      "radius": 420,
+      "timing": {
+        "prepMs": 300,
+        "launchMs": 900,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 28000,
+        "durationMs": 5000
+      }
+    }
+  },
+  "higuruma": {
+    "gavelExtend": {
+      "damage": 45,
+      "cost": 10,
+      "hitRadius": 240,
+      "stunMs": 200,
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 2800
+      }
+    },
+    "gavelGrow": {
+      "cost": 15,
+      "damageMult": 1.9,
+      "slowMult": 1.7,
+      "timing": {
+        "prepMs": 10,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 9000,
+        "durationMs": 6000
+      }
+    },
+    "gavelThrow": {
+      "damage": 70,
+      "cost": 0,
+      "speed": 12,
+      "projectileLifeMs": 1100,
+      "hitRadius": 14,
+      "stunMs": 250,
+      "knockback": 5,
+      "timing": {
+        "prepMs": 200,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 150,
+        "cooldownMs": 3500
+      }
+    }
+  },
+  "nanami": {
+    "ratio": {
+      "damage": 200,
+      "cost": 25,
+      "stunMs": 650,
+      "knockback": 12,
+      "hitRange": 46,
+      "timing": {
+        "prepMs": 120,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 2600
+      }
+    },
+    "collapse": {
+      "damage": 270,
+      "cost": 60,
+      "stunMs": 900,
+      "knockback": 18,
+      "maxRange": 400,
+      "timing": {
+        "prepMs": 150,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 9000
+      }
+    },
+    "overtime": {
+      "cost": 0,
+      "once": true,
+      "mult": {
+        "damage": 1.5,
+        "speed": 1.2,
+        "reflex": 1.2
+      },
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 0
+      }
+    }
+  },
+  "megumi": {
+    "shadow": {
+      "cost": 40,
+      "damage": 75,
+      "stunMs": 350,
+      "knockback": 6,
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 5500,
+        "durationMs": 1800
+      }
+    },
+    "armory": {
+      "cost": 30,
+      "damage": 55,
+      "timing": {
+        "prepMs": 0,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 12000,
+        "durationMs": 8000
+      }
+    },
+    "dog": {
+      "cost": 110,
+      "hp": 300,
+      "damage": 45,
+      "speed": 5.2,
+      "tickMs": 850,
+      "stunMs": 60,
+      "knockback": 3,
+      "timing": {
+        "prepMs": 150,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 9000,
+        "durationMs": 16000
+      }
+    },
+    "frog": {
+      "cost": 25,
+      "hp": 50,
+      "damage": 8,
+      "maxActive": 5,
+      "maxRange": 230,
+      "tickMs": 3000,
+      "speed": 5,
+      "stunMs": 350,
+      "knockback": 13,
+      "timing": {
+        "prepMs": 80,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 2500,
+        "durationMs": 14000
+      }
+    },
+    "nue": {
+      "cost": 70,
+      "hp": 250,
+      "damage": 28,
+      "speed": 5.5,
+      "stunMs": 250,
+      "tickMs": 1600,
+      "hitRange": 60,
+      "comboDurationMs": 650,
+      "comboSpeedMult": 9,
+      "timing": {
+        "prepMs": 120,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 3500,
+        "durationMs": 16000
+      }
+    },
+    "rabbit": {
+      "cost": 60,
+      "count": 50,
+      "damage": 1,
+      "speed": 1.6,
+      "knockback": 0.5,
+      "timing": {
+        "prepMs": 100,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 7000,
+        "durationMs": 6000
+      }
+    },
+    "elephant": {
+      "cost": 150,
+      "hp": 650,
+      "impactDamage": 170,
+      "radius": 55,
+      "stunMs": 800,
+      "damagePerTick": 7,
+      "tickMs": 140,
+      "knockback": 2.2,
+      "speed": 0.8,
+      "warmupMs": 650,
+      "timing": {
+        "prepMs": 150,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 14000,
+        "durationMs": 7000
+      }
+    },
+    "mahoraga": {
+      "cost": 200,
+      "once": true,
+      "hp": 1900,
+      "damage": 110,
+      "impactDamage": 70,
+      "damageMult": 2.5,
+      "speed": 3.8,
+      "hitRange": 44,
+      "tickMs": 1100,
+      "stunMs": 400,
+      "knockback": 8,
+      "timing": {
+        "prepMs": 900,
+        "launchMs": 0,
+        "speedMult": 1,
+        "impactMs": 0,
+        "recoveryMs": 0,
+        "cooldownMs": 0
+      }
+    }
+  }
+}
