@@ -1,7 +1,7 @@
 {
   "arena": {
-    "width": 900,
-    "height": 520,
+    "width": 1200,
+    "height": 720,
     "fighterSize": 30,
     "timeScale": 0.55,
     "domainRadius": 240
@@ -48,16 +48,16 @@
   "healing": {
     "rates": {
       "rct": {
-        "hp": 5,
-        "en": 15
+        "hp": 1,
+        "en": 1
       },
       "halfCurse": {
         "hp": 5,
-        "en": 10
+        "en": 5
       },
       "curse": {
         "hp": 5,
-        "en": 5
+        "en": 2.5
       }
     },
     "hpPerSecond": 60,

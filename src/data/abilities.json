@@ -123,7 +123,7 @@
         "durationMs": 8000
       },
       "timing": {
-        "prepMs": 300,
+        "prepMs": 0,
         "launchMs": 0,
         "speedMult": 1,
         "impactMs": 0,
@@ -144,7 +144,7 @@
         "durationMs": 8000
       },
       "timing": {
-        "prepMs": 500,
+        "prepMs": 250,
         "launchMs": 0,
         "speedMult": 1,
         "impactMs": 0,
@@ -161,7 +161,7 @@
         "durationMs": 8000
       },
       "timing": {
-        "prepMs": 350,
+        "prepMs": 250,
         "launchMs": 0,
         "speedMult": 1,
         "impactMs": 0,
@@ -178,7 +178,7 @@
       "stunMs": 700,
       "knockback": 14,
       "timing": {
-        "prepMs": 150,
+        "prepMs": 0,
         "launchMs": 0,
         "speedMult": 1,
         "impactMs": 0,
@@ -226,7 +226,7 @@
       "speed": 9,
       "projectileLifeMs": 1500,
       "timing": {
-        "prepMs": 200,
+        "prepMs": 0,
         "launchMs": 0,
         "speedMult": 1,
         "impactMs": 0,
@@ -623,7 +623,7 @@
       "cost": 180,
       "hitkill": true,
       "damage": 1000,
-      "speed": 2.2,
+      "speed": 1,
       "projectileLifeMs": 6500,
       "hitRadius": 20,
       "turnSpeed": 0.03,
@@ -637,7 +637,7 @@
       }
     },
     "domain": {
-      "damage": 240,
+      "damage": 0,
       "cost": 160,
       "timing": {
         "prepMs": 300,
@@ -663,7 +663,7 @@
       "comboSpeedMult": 4,
       "comboDurationMs": 500,
       "timing": {
-        "prepMs": 350,
+        "prepMs": 0,
         "launchMs": 0,
         "speedMult": 1,
         "impactMs": 0,
@@ -684,7 +684,7 @@
         "speedMult": 1,
         "impactMs": 0,
         "recoveryMs": 0,
-        "cooldownMs": 0
+        "cooldownMs": 100
       }
     }
   },
@@ -813,7 +813,7 @@
       "grades": [
         {
           "name": "Grau 4",
-          "count": 17,
+          "count": 34,
           "hp": 30,
           "damage": 6,
           "speed": 2.6,
@@ -822,7 +822,7 @@
         },
         {
           "name": "Grau 3",
-          "count": 10,
+          "count": 20,
           "hp": 60,
           "damage": 10,
           "speed": 2.4,
@@ -831,7 +831,7 @@
         },
         {
           "name": "Grau 2",
-          "count": 8,
+          "count": 16,
           "hp": 100,
           "damage": 16,
           "speed": 2.2,
@@ -840,7 +840,7 @@
         },
         {
           "name": "Grau 1",
-          "count": 5,
+          "count": 10,
           "hp": 180,
           "damage": 20,
           "speed": 2.1,
@@ -849,7 +849,7 @@
         },
         {
           "name": "Grau Especial",
-          "count": 1,
+          "count": 2,
           "hp": 900,
           "damage": 100,
           "speed": 30,
@@ -869,10 +869,10 @@
     },
     "uzumaki": {
       "cost": 150,
-      "damage": 100,
+      "damage": 340,
       "consumeFraction": 0.5,
       "consumeFieldSpirits": true,
-      "speed": 8.5,
+      "speed": 14,
       "stunMs": 400,
       "specialStunMs": 900,
       "knockback": 12,
@@ -997,7 +997,7 @@
       }
     },
     "fuga": {
-      "damage": 450,
+      "damage": 600,
       "cost": 180,
       "speed": 20,
       "projectileLifeMs": 2200,
@@ -1018,7 +1018,7 @@
       "cost": 380,
       "speed": 20,
       "projectileLifeMs": 1600,
-      "hitRadius": 8,
+      "hitRadius": 20,
       "timing": {
         "prepMs": 500,
         "launchMs": 1800,
@@ -1055,7 +1055,7 @@
       }
     },
     "domain": {
-      "damage": 40,
+      "damage": 45,
       "tickMs": 150,
       "cost": 300,
       "radius": 420,
@@ -1119,7 +1119,7 @@
   },
   "nanami": {
     "ratio": {
-      "damage": 200,
+      "damage": 80,
       "cost": 25,
       "stunMs": 650,
       "knockback": 12,
@@ -1199,7 +1199,7 @@
       "cost": 110,
       "hp": 300,
       "damage": 45,
-      "speed": 5.2,
+      "speed": 3,
       "tickMs": 850,
       "stunMs": 60,
       "knockback": 3,
@@ -1220,7 +1220,7 @@
       "maxActive": 5,
       "maxRange": 230,
       "tickMs": 3000,
-      "speed": 5,
+      "speed": 2,
       "stunMs": 350,
       "knockback": 13,
       "timing": {
@@ -1256,6 +1256,7 @@
     "rabbit": {
       "cost": 60,
       "count": 50,
+      "hp": 30,
       "damage": 1,
       "speed": 1.6,
       "knockback": 0.5,
@@ -1312,4 +1313,5 @@
       }
     }
   }
+}
 }

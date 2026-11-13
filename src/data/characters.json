@@ -11,7 +11,7 @@
     "speed": 2.6,
     "reflex": 0.7,
     "taijutsu": {
-      "damage": 20,
+      "damage": 55,
       "style": "contra-ataque defensivo",
       "timing": {
         "prepMs": 0,
@@ -88,7 +88,7 @@
     "speed": 3,
     "reflex": 0.85,
     "taijutsu": {
-      "damage": 45,
+      "damage": 80,
       "style": "pressão agressiva em combo",
       "timing": {
         "prepMs": 0,
@@ -149,8 +149,8 @@
     "color": "#3b82f6",
     "range": "variada",
     "preferredDistance": 200,
-    "hp": 1500,
-    "energy": 1500,
+    "hp": 2500,
+    "energy": 1950,
     "energyRegen": 16,
     "speed": 3.5,
     "reflex": 0.95,
@@ -177,7 +177,7 @@
       "switchJitterMs": 3000
     },
     "taijutsu": {
-      "damage": 28,
+      "damage": 70,
       "style": "técnica refinada e esquiva",
       "timing": {
         "prepMs": 0,
@@ -249,7 +249,7 @@
     "speed": 3.1,
     "reflex": 0.85,
     "taijutsu": {
-      "damage": 50,
+      "damage": 65,
       "stunMs": 350,
       "style": "Fúria Estelar",
       "timing": {
@@ -268,7 +268,7 @@
       "damage": 30,
       "whipDamage": 45,
       "projectileDamage": 65,
-      "speed": 7,
+      "speed": 18,
       "cooldown": 1800,
       "initialCooldownMs": 600,
       "whipDurationMs": 350,
@@ -323,7 +323,7 @@
     "speed": 3.0,
     "reflex": 0.85,
     "taijutsu": {
-      "damage": 28,
+      "damage": 50,
       "style": "Armadura de Inseto · combos e armas construídas",
       "timing": {
         "prepMs": 0,
@@ -392,7 +392,7 @@
     "reflex": 0.85,
     "damageMult": 1.15,
     "taijutsu": {
-      "damage": 30,
+      "damage": 40,
       "style": "Energia Amaldiçoada Áspera",
       "timing": {
         "prepMs": 0,
@@ -432,13 +432,6 @@
       }
     ],
     "blackFlashChance": 0.03,
-    "passives": [
-      {
-        "id": "jackpotIndicator",
-        "name": "🎰 Indicador de Jackpot",
-        "description": "Dentro da Expansão de Domínio, acertar o oponente enche o indicador e melhora a tentativa de Jackpot"
-      }
-    ],
     "intelligence": 0.75
   },
   {
@@ -738,6 +731,7 @@
     "energy": 1000,
     "energyRegen": 15,
     "speed": 2.9,
+"rct": true,
     "reflex": 0.85,
     "intelligence": 0.9,
     "taijutsu": {
