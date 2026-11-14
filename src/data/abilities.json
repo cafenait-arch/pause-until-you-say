@@ -592,7 +592,7 @@
         "speed": 1.3,
         "reflex": 1.15
       },
-      "hp": 700,
+      "hp": 550,
       "timing": {
         "prepMs": 600,
         "launchMs": 0,
@@ -970,7 +970,7 @@
       "cost": 85,
       "speed": 7,
       "projectileLifeMs": 1800,
-      "hitRadius": 55.2,
+      "hitRadius": 110.4,
       "knockback": 8,
       "timing": {
         "prepMs": 0,
@@ -1137,6 +1137,7 @@
       "damage": 270,
       "cost": 60,
       "stunMs": 900,
+      "speed": 10,
       "knockback": 18,
       "maxRange": 400,
       "timing": {
@@ -1308,4 +1309,5 @@
       }
     }
   }
+}
 }
