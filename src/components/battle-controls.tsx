@@ -2,7 +2,7 @@ import { useEffect, useRef, type PointerEvent } from "react";
 import { HeartPulse, Move, Swords, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Battle } from "@/lib/engine";
-import { megumiButton } from "@/lib/megumi";
+import { megumiButton, megumiExtras } from "@/lib/megumi";
 
 export function BattleControls({ battle, paused, refresh }: { battle: Battle; paused: boolean; refresh: () => void }) {
   const stick = useRef<HTMLDivElement>(null);
@@ -99,6 +99,9 @@ export function BattleControls({ battle, paused, refresh }: { battle: Battle; pa
           </Button>;
         })}
       </div>
+      {megumiExtras(battle, fighter).length > 0 && <div className="battle-abilities grid grid-cols-3 gap-2">
+        {megumiExtras(battle, fighter).map((x) => <Button key={x.id} disabled={blocked || x.disabled} {...command(x.run)} className="h-11 min-w-0 touch-none whitespace-normal border border-border bg-muted px-1.5 text-[10px] leading-tight text-foreground hover:bg-muted/80">{x.label}</Button>)}
+      </div>}
     </section>
   );
 }

@@ -58,13 +58,12 @@ export function megumiUnavailable(b: Battle, me: Fighter, _op: Fighter, a: Abili
   if (!MG_TYPES.has(a.type) || !me.mg) return undefined;
   const idx = b.f.indexOf(me), mg = me.mg;
   if (a.type === "mgShadow" && mg.hide > 0) return null;
-  if (a.type === "mgNue" && mine(b, idx, "nue").length) return mg.carry > 0 ? "Voando" : (me.cd["nue:carry"] ?? 0) > 0 ? `${((me.cd["nue:carry"] ?? 0) / TIME_SCALE / 1000).toFixed(1)}s` : null;
   if (me.sealed > 0) return "Técnica confiscada";
   if (a.once && me.used.has(a.id)) return "Usada";
   const lk = KIND_OF[a.type];
   if (lk && lk !== "frog" && lk !== "rabbit" && mg.lost[lk]) return "✝ Morto";
-  if ((a.type === "mgDog" || a.type === "mgElephant") && mine(b, idx, lk!).length) return null; // toque = recolher
-  if ((a.type === "mgDog" || a.type === "mgElephant" || a.type === "mgRabbit" || a.type === "mgMahoraga") && mine(b, idx, ({ mgDog: "dog", mgElephant: "elephant", mgRabbit: "rabbit", mgMahoraga: "mahoraga" } as const)[a.type]).length) return "Em campo";
+  // no Jardim das Sombras pode invocar vários de cada; fora dele, um por vez
+  if (lk && lk !== "frog" && (lk === "mahoraga" || !gardenOf(b, idx)) && mine(b, idx, lk).length) return "Em campo";
   const frogMax = Math.max(0, (a.maxActive ?? 5) - (mg.lost["frog"] ?? 0));
   if (a.type === "mgFrog" && !frogMax) return "✝ Mortos";
   if (a.type === "mgFrog" && mine(b, idx, "frog").length >= frogMax) return `Máx. ${frogMax}`;
@@ -78,19 +77,28 @@ export function megumiButton(b: Battle, me: Fighter, a: Ability): { label: strin
   if (!me.mg) return null;
   const idx = b.f.indexOf(me);
   if (a.type === "mgShadow" && me.mg.hide > 0) return { label: "Emergir", note: "nas sombras" };
-  if (a.type === "mgNue" && mine(b, idx, "nue").length) return { label: "Nue · Carregar", note: "2º toque · joystick" };
-  if ((a.type === "mgDog" || a.type === "mgElephant") && mine(b, idx, KIND_OF[a.type]!).length) return { label: "Recolher", note: a.name };
   if (a.type === "mgFrog") return { label: `Sapo (${mine(b, idx, "frog").length}/${Math.max(0, (a.maxActive ?? 5) - (me.mg.lost["frog"] ?? 0))})` };
   return null;
+}
+/** Botões extras: recolher cada tipo de Shikigami em campo e o voo do Nue */
+export function megumiExtras(b: Battle, me: Fighter): { id: string; label: string; disabled: boolean; run: () => void }[] {
+  if (!me.mg) return [];
+  const idx = b.f.indexOf(me), op = b.f[1 - idx], out: { id: string; label: string; disabled: boolean; run: () => void }[] = [];
+  const nue = abil(me, "mgNue");
+  if (nue && op && mine(b, idx, "nue").length) out.push({ id: "carry", label: me.mg.carry > 0 ? "Voando" : "Nue · Carregar", disabled: me.mg.carry > 0 || (me.cd["nue:carry"] ?? 0) > 0, run: () => { nueCarry(b, me, op, nue); } });
+  for (const k of ["dog", "nue", "frog", "rabbit", "elephant"] as ShikiKind[]) {
+    const list = mine(b, idx, k); if (!list.length) continue;
+    out.push({ id: "recall:" + k, label: `Recolher ${k === "frog" ? "Sapos" : k === "rabbit" ? "Coelhos" : NAMES[k].split(":")[0]}${list.length > 1 ? ` ×${list.length}` : ""}`, disabled: me.mg.carry > 0 && k === "nue", run: () => { for (const s of list) recall(b, s); } });
+  }
+  return out;
 }
 
 export function castMegumi(b: Battle, me: Fighter, op: Fighter, idx: number, a: Ability): boolean {
   const mg = me.mg; if (!mg) return false;
   const ang = Math.atan2(op.y - me.y, op.x - me.x);
   if (a.type === "mgShadow" && mg.hide > 0) { emerge(b, me, op, a); return true; }
-  if (a.type === "mgNue") { const nue = mine(b, idx, "nue")[0]; if (nue) return nueCarry(b, me, op, a); }
+  if (a.type === "mgNue" && !b.isPlayer(me)) { const nue = mine(b, idx, "nue")[0]; if (nue && !gardenOf(b, idx)) return nueCarry(b, me, op, a); }
   if (megumiUnavailable(b, me, op, a) !== null) return false;
-  if (a.type === "mgDog" || a.type === "mgElephant") { const on = mine(b, idx, KIND_OF[a.type]!)[0]; if (on) { recall(b, on); return true; } }
   const garden = !!gardenOf(b, idx);
   b.use(me, a, costOf(b, idx, a));
   if (garden) me.cd[a.id] = (me.cd[a.id] ?? 0) * 0.4;
@@ -228,6 +236,25 @@ export function updateMegumi(b: Battle, dt: number) {
     // golpes corpo a corpo acertam os Shikigamis colados em quem golpeia
     if (op.meleeCd > mg.prevOpMelee + 40) for (const s of b.shiki) if (s.owner === idx && Math.hypot(s.x - op.x, s.y - op.y) < RADIUS[s.kind] + 30) hurtShiki(b, s, op.def.taijutsu.damage * 1.3, "melee", "golpes físicos");
     if (me.meleeCd > mg.prevMyMelee + 40) for (const s of b.shiki) if (s.owner === idx && s.kind === "mahoraga" && s.target === idx && Math.hypot(s.x - me.x, s.y - me.y) < RADIUS.mahoraga + 30) hurtShiki(b, s, me.def.taijutsu.damage, "melee", "golpes físicos");
+    // o oponente (IA) trata os Shikigamis como ameaça real: persegue e golpeia o mais perigoso por perto
+    if (!b.isPlayer(op) && op.hp > 0 && op.stun <= 0 && !op.casting && !op.beam && op.windup <= 0 && !b.trialActive()) {
+      const mDist = Math.hypot(me.x - op.x, me.y - op.y), reach = b.meleeReach(op) + 6;
+      let tgt: Shiki | undefined, best = Infinity;
+      for (const s of b.shiki) {
+        if (s.owner !== idx || s.hp <= 0 || s.hidden || s.fall > 0 || s.kind === "copy") continue;
+        const d = Math.hypot(s.x - op.x, s.y - op.y), score = d - (s.kind === "dog" || s.kind === "mahoraga" || s.kind === "rabbit" ? 50 : 0);
+        if (d < 170 && score < best && (d < mDist * 0.85 || megumiHidden(me))) { best = score; tgt = s; }
+      }
+      if (tgt) {
+        const d = Math.hypot(tgt.x - op.x, tgt.y - op.y), a = Math.atan2(tgt.y - op.y, tgt.x - op.x);
+        if (d > reach + RADIUS[tgt.kind]) { op.vx += Math.cos(a) * 0.6 * dt / 16; op.vy += Math.sin(a) * 0.6 * dt / 16; }
+        else if (op.meleeCd <= 0) {
+          op.meleeCd = 550; const dmg = op.def.taijutsu.damage * b.dm(op) * 1.3;
+          b.fx.push({ kind: "slash", x: tgt.x, y: tgt.y, r: 24, color: "#fff", life: 220, max: 220, ang: a + 1.2 });
+          for (const s of b.shiki) if (s.owner === idx && s.hp > 0 && !s.hidden && Math.hypot(s.x - tgt.x, s.y - tgt.y) < RADIUS[s.kind] + (s.kind === "rabbit" ? 40 : 6)) hurtShiki(b, s, dmg, "melee", "golpes físicos");
+        }
+      }
+    }
     mg.prevOpMelee = op.meleeCd; mg.prevMyMelee = me.meleeCd;
     // IA poupa Shikigamis feridos
     if (!b.isPlayer(me)) for (const s of b.shiki) if (s.owner === idx && s.life > 0 && s.hp > 0 && s.kind !== "mahoraga" && s.kind !== "rabbit" && s.kind !== "copy" && s.hp / s.max < 0.25 && !(s.kind === "nue" && mg.carry > 0)) recall(b, s);
@@ -279,7 +306,10 @@ export function updateMegumi(b: Battle, dt: number) {
               if (Math.hypot(victim.x - tg.tx, victim.y - tg.ty) < 24 && !megumiHidden(victim)) {
                 if (tg.save) { const a = Math.atan2(s.y - me.y, s.x - me.x); me.vx = Math.cos(a) * 11; me.vy = Math.sin(a) * 11; b.say(`Sapo puxa ${first(me)} para longe do perigo`); }
                 else if (b.damage(op, s.ab.damage ?? 15, "Sapo: Língua") > 0) {
-                  const a = Math.atan2(op.y - me.y, op.x - me.x), kb = s.ab.knockback ?? 13;
+                  // estratégia: puxa o inimigo para o Megumi quando ele ou um Shikigami pode punir; senão arremessa para longe
+                  const pull = (me.mg?.weapon ?? 0) > 0 || mine(b, s.owner, "dog").length > 0 || (abil(me, "mgElephant") && !me.mg?.lost["elephant"] && !((me.cd[abil(me, "mgElephant")!.id] ?? 0) > 0)) || Math.random() < 0.4;
+                  const a = pull ? Math.atan2(me.y - op.y, me.x - op.x) : Math.atan2(op.y - me.y, op.x - me.x), kb = (s.ab.knockback ?? 13) * (pull ? Math.min(1, Math.hypot(me.x - op.x, me.y - op.y) / 160) : 1);
+                  if (pull) b.say(`Sapo puxa ${first(op)} para perto de ${first(me)}`);
                   op.vx = Math.cos(a) * kb; op.vy = Math.sin(a) * kb; op.stun = Math.max(op.stun, s.ab.stunMs ?? 500); op.beam = null; op.casting = null;
                   b.say(`Sapo agarra ${first(op)} com a língua e o arremessa`);
                 }
@@ -429,8 +459,8 @@ export function decideMegumi(b: Battle, me: Fighter, op: Fighter, idx: number, d
   if (hpR < 0.35 && go("mgMahoraga")) return true;
   const dom = me.def.abilities.find((a) => a.chimera);
   if (dom && !b.domains.length && dist < 150 && b.ready(me, dom) && (op.hp / op.def.hp < 0.65 || Math.random() < 0.2) && b.beginDomain(me, op, idx, dom)) { b.say(`${first(me)}: ${dom.name.toUpperCase()}`); return true; }
-  if (!n("dog") && go("mgDog")) return true;
-  if (!n("nue") && dist > 110 && go("mgNue", 0.5)) return true;
+  if (n("dog") < (garden ? 2 : 1) && go("mgDog")) return true;
+  if (n("nue") < (garden ? 2 : 1) && dist > 110 && go("mgNue", 0.5)) return true;
   if (n("frog") < (garden ? 5 : 2) && go("mgFrog", 0.5)) return true;
   if (dist < 90 && go("mgRabbit", 0.4)) return true;
   if ((op.stun > 200 || Math.random() < 0.06) && dist < 450 && go("mgElephant")) return true;

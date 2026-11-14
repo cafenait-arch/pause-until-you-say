@@ -84,7 +84,7 @@ export type Fighter = {
   /** Lâmina de Sangue do Choso: tempo restante da adaga na mão */
   blade: number;
   poison: { left: number; tick: number; every: number; damage: number } | null;
-  charges: number; amber: number; garuda: Garuda | null; starForce: number; anger: number; armor: number; metal: number; sphere: boolean; jackpot: number; jackpots: number; healing: boolean; arsenal: number[];
+  charges: number; amber: number; garuda: Garuda | null; starForce: number; starT: number; anger: number; armor: number; metal: number; sphere: boolean; jackpot: number; jackpots: number; healing: boolean; arsenal: number[];
   def: CharDef; x: number; y: number; vx: number; vy: number;
   hp: number; en: number; stun: number; cd: Record<string, number>; used: Set<string>;
   buff: { damage: number; speed: number; reflex: number } | null;
@@ -96,7 +96,7 @@ export type Fighter = {
   windup: number;
   sealed: number; executioner: number; gavelBig: number; gavelExt: number; gavelReach: number;
 };
-export type Proj = { sure?: boolean; home?: number; curve?: number; x: number; y: number; vx: number; vy: number; dmg: number; owner: number; kind: "blood" | "slash" | "red" | "purple" | "construct" | "metal" | "sphere" | "electric" | "electromagnetic" | "sound" | "uzumaki" | "plasma" | "ball" | "meteor" | "disc" | "chain" | "tojiChain" | "fuga" | "world" | "net" | "yzBlade" | "yzChain" | "yzLance" | "gavel"; life: number; hold?: number; originX?: number; originY?: number; shape?: number; stun?: number; name: string; ab?: Ability };
+export type Proj = { hit?: boolean; sure?: boolean; home?: number; curve?: number; x: number; y: number; vx: number; vy: number; dmg: number; owner: number; kind: "blood" | "slash" | "red" | "purple" | "construct" | "metal" | "sphere" | "electric" | "electromagnetic" | "sound" | "uzumaki" | "plasma" | "ball" | "meteor" | "disc" | "chain" | "tojiChain" | "fuga" | "world" | "net" | "yzBlade" | "yzChain" | "yzLance" | "gavel"; life: number; hold?: number; originX?: number; originY?: number; shape?: number; stun?: number; name: string; ab?: Ability };
 type Door = { x: number; y: number; owner: number; ang: number; mode: "bloqueio" | "impacto" | "empurrao" | "combinacao"; life: number; max: number };
 /** Espíritos do Kenjaku por grau: 4, 3, 2, 1, especial */
 export const SPIRIT_GRADES = abilityStats.kenjaku.spirits.grades;
@@ -112,6 +112,8 @@ export type Domain = { tick?: number; owner: number; x: number; y: number; r: nu
 
 /** Acusações possíveis da Sentença Mortal — o Judgeman escolhe, não o Higuruma */
 /** Campos do oponente/lutador que a janela de adiamento desfaz e reaplica no momento do impacto */
+/** Ataques que atravessam o alvo e seguem voando */
+const PASS_THROUGH = new Set(["slash", "purple", "net", "world", "fuga", "red", "uzumaki", "plasma"]);
 const OP_DELTA = ["hp", "armor", "en", "simpleHp", "vx", "vy", "exchangeLoss"] as const;
 const OP_MAX = ["stun", "retreatT"] as const;
 const OP_SET = ["beam", "casting", "buff", "poison", "metal", "inf", "simple", "wicker", "dodgeT", "dodgeX", "dodgeY", "sealed", "charges"] as const;
@@ -151,7 +153,7 @@ export class Battle {
   }
   abilityDamage(t: Fighter, d: number, a?: Ability) { return a?.hitkill ? t.hp + t.armor : d; }
   mk(def: CharDef, x: number, y: number): Fighter {
-    return { recovery: 0, mg: def.abilities.some((a) => MG_TYPES.has(a.type)) ? makeMg() : null, yz: def.abilities.some((a) => YZ_TYPES.has(a.type)) ? makeYz() : null, windup: 0, equipment: "spear", retreatT: 0, exchangeLoss: 0, blade: 0, sealed: 0, executioner: 0, gavelBig: 0, gavelExt: 0, gavelReach: 0, weaponHp: def.weapon?.durability ?? 0, poison: null, arsenal: def.abilities.find((a) => a.type === "curseSpirits")?.grades?.map((g) => g.count) ?? [], charges: 0, amber: 0, garuda: def.companion ? { massT: 0, massBonus: 0, hp: def.companion.hp, x: x + 40, y: y - 35, mode: "follow", cd: def.companion.initialCooldownMs ?? 600, t: 0, vx: 0, vy: 0 } : null, starForce: def.taijutsu.damage, anger: 0, armor: 0, metal: 0, sphere: false, jackpot: 0, jackpots: 0, healing: false, def, x, y, vx: 0, vy: 0, hp: def.hp, en: def.energy, stun: 0, cd: {}, used: new Set(), buff: null, beam: null, simple: 0, simpleHp: 0, wicker: false, dashAtk: 0, casting: null, inf: 0, think: 0, strafe: Math.random() < 0.5 ? 1 : -1, meleeCd: 0, flash: 0, aggr: (def.combat?.ai?.aggressionBase ?? combatDefaults.ai.aggressionBase) + Math.random() * (def.combat?.ai?.aggressionJitter ?? combatDefaults.ai.aggressionJitter), strafeCd: 0, modeT: 0, want: def.preferredDistance, wallHit: false, dodgeT: 0, dodgeX: 0, dodgeY: 0 };
+    return { recovery: 0, mg: def.abilities.some((a) => MG_TYPES.has(a.type)) ? makeMg() : null, yz: def.abilities.some((a) => YZ_TYPES.has(a.type)) ? makeYz() : null, windup: 0, equipment: "spear", retreatT: 0, exchangeLoss: 0, blade: 0, sealed: 0, executioner: 0, gavelBig: 0, gavelExt: 0, gavelReach: 0, weaponHp: def.weapon?.durability ?? 0, poison: null, arsenal: def.abilities.find((a) => a.type === "curseSpirits")?.grades?.map((g) => g.count) ?? [], charges: 0, amber: 0, garuda: def.companion ? { massT: 0, massBonus: 0, hp: def.companion.hp, x: x + 40, y: y - 35, mode: "follow", cd: def.companion.initialCooldownMs ?? 600, t: 0, vx: 0, vy: 0 } : null, starForce: def.taijutsu.damage, starT: 0, anger: 0, armor: 0, metal: 0, sphere: false, jackpot: 0, jackpots: 0, healing: false, def, x, y, vx: 0, vy: 0, hp: def.hp, en: def.energy, stun: 0, cd: {}, used: new Set(), buff: null, beam: null, simple: 0, simpleHp: 0, wicker: false, dashAtk: 0, casting: null, inf: 0, think: 0, strafe: Math.random() < 0.5 ? 1 : -1, meleeCd: 0, flash: 0, aggr: (def.combat?.ai?.aggressionBase ?? combatDefaults.ai.aggressionBase) + Math.random() * (def.combat?.ai?.aggressionJitter ?? combatDefaults.ai.aggressionJitter), strafeCd: 0, modeT: 0, want: def.preferredDistance, wallHit: false, dodgeT: 0, dodgeX: 0, dodgeY: 0 };
   }
   say(s: string) { this.log.unshift(`${(this.time / 1000).toFixed(1)}s · ${s}`); this.log = this.log.slice(0, 14); }
   amberMult(f: Fighter) { return f.amber > 0 ? f.def.abilities.find((a) => a.type === "amber")?.mult : undefined; }
@@ -374,11 +376,12 @@ export class Battle {
     { const atk = this.f[0] === t ? this.f[1] : this.f[0]; if (atk && atk.hp > 0 && t.hp > 0 && d < t.hp) d *= this.power(atk); } // golpes enfraquecem com pouca EA (golpes fatais seguem fatais)
     if (blockable && this.garudaGuard(t, d, src)) return 0;
     if (blockable && megumiShadowGuard(this, t, src)) return 0;
-    if (blockable && t.inf > 0 && !pierceInf) { this.fx.push({ kind: "ring", x: t.x, y: t.y, r: 22, color: "#bfdbfe", life: 300, max: 300 }); this.say(`Ilimitado parou ${src}`); return 0; }
+    if (t.inf > 0 && !pierceInf && !src.startsWith("Veneno")) { this.fx.push({ kind: "ring", x: t.x, y: t.y, r: 22, color: "#bfdbfe", life: 300, max: 300 }); this.say(`Ilimitado parou ${src}`); return 0; }
     if (blockable && yorozuPlateBlock(this, t, src)) return 0;
     if (blockable && t.metal > 0) { t.metal = 0; this.fx.push({ kind: "ring", x: t.x, y: t.y, r: 26, color: "#cbd5e1", life: 350, max: 350 }); this.say(`Metal Líquido de ${t.def.name.split(" ")[0]} defendeu ${src}`); return 0; }
     if (blockable) d = this.tryBlock(t, d, src);
     d = Math.max(0, d);
+    if (d > 0 && !src.startsWith("Veneno") && src !== "Fuga do Coelho") this.interrupt(t);
     if (t.armor > 0) {
       const absorbed = Math.min(t.armor, d); t.armor -= absorbed; d -= absorbed;
       if (!silent) this.say(`Armadura de ${t.def.name.split(" ")[0]} absorveu ${Math.round(absorbed)} · ${Math.ceil(t.armor)} vida`);
@@ -393,6 +396,16 @@ export class Battle {
     if (lostHp > 0 && !silent && src !== "Impacto na parede") this.jackpotIndicator(t);
     this.checkDeath(t);
     return lostHp;
+  }
+  /** Levar dano cancela a técnica em preparo, canalização e projéteis ainda não lançados (armadura não impede) */
+  interrupt(t: Fighter) {
+    const i = this.f.indexOf(t);
+    const held = this.projs.some((p) => p.owner === i && (p.hold === undefined ? t.windup > 0 : p.hold > 0));
+    if (!t.casting && !t.beam && t.windup <= 0 && !held) return;
+    this.projs = this.projs.filter((p) => !(p.owner === i && (p.hold === undefined ? t.windup > 0 : p.hold > 0)));
+    if (t.casting && t.def.id === "gojo") this.blues = this.blues.filter((b) => this.f[b.owner] !== t);
+    t.casting = null; t.beam = null; t.windup = 0;
+    this.say(`${t.def.name.split(" ")[0]} foi interrompido`);
   }
   checkDeath(t: Fighter) {
     if (t.hp > 0 || this.winner) return;
@@ -683,14 +696,23 @@ export class Battle {
     if (a.type === "discharge" && me.charges < (a.maxUnits ?? 3)) return "Sem cargas";
     if (a.requiresSphere && !me.sphere) return "Requer esfera";
     if ((a.type === "domain" || a.type === "pachinko") && (this.domains.length || dist > DOMAIN_R - SIZE)) return this.domains.length ? "Barreira ativa" : "Fora de alcance";
-    if ((a.type === "fist" || a.type === "starRage") && dist >= (a.hitRange ?? SIZE + this.rules(me, "movement").meleePadding)) return "Fora de alcance";
+    if (a.type === "fist" && dist >= (a.hitRange ?? SIZE + this.rules(me, "movement").meleePadding)) return "Fora de alcance";
     if (a.type === "doors" && dist > (a.hitRange ?? 320)) return "Fora de alcance";
     if (a.type === "blackHole" && me.en <= 0) return "Sem EA";
     if (a.type === "curseSpirits" && (!me.arsenal.some((n) => n > 0) || this.spirits.filter((s) => s.owner === this.player).length >= (a.maxActive ?? 4))) return "Sem espaço";
     return null;
   }
   playerAbility(id: string, choice: AbilityChoice = {}) {
-    try { return this.playerAbilityInner(id, choice); } finally { this.closeWin(); }
+    const before = new Set(this.projs);
+    try { return this.playerAbilityInner(id, choice); } finally {
+      this.closeWin();
+      // mira pelo analógico: técnicas lançadas seguem a direção do direcional
+      if (this.player !== null && (this.input.x || this.input.y)) {
+        const ang = Math.atan2(this.input.y, this.input.x), me = this.f[this.player];
+        for (const p of this.projs) if (!before.has(p) && p.owner === this.player) { const sp = Math.hypot(p.vx, p.vy); p.vx = Math.cos(ang) * sp; p.vy = Math.sin(ang) * sp; p.home = 0; }
+        if (me.beam) me.beam.ang = ang;
+      }
+    }
   }
   playerAbilityInner(id: string, choice: AbilityChoice = {}) {
     if (this.player === null) return false;
@@ -715,8 +737,8 @@ export class Battle {
     if (["soundwave", "electromagnetic", "staffElectric"].includes(a.type)) return this.fireKashimoWave(me, op, idx, a);
     if (a.type === "domain" || a.type === "pachinko") return this.beginDomain(me, op, idx, a);
     if (a.type === "starRage") {
-      if (me.meleeCd > 0) return false;
-      this.melee(me, op); return true;
+      me.starT = me.starT > 0 ? 0 : a.durationMs ?? 8000; me.cd[a.id] = 400;
+      this.say(me.starT > 0 ? `${me.def.name.split(" ")[0]}: Fúria Estelar · massa dos golpes aumentada` : `${me.def.name.split(" ")[0]} desativou a Fúria Estelar`); return true;
     }
     if (a.type === "doors") return this.castDoor(me, op, idx, (choice.mode ?? "impacto") as Door["mode"]);
     if (a.type === "perfectSphere" && me.sphere) {
@@ -736,7 +758,7 @@ export class Battle {
       case "bloodMeteor": this.fireMeteor(me, op, idx, a); break;
       case "bloodSlash": this.fireBloodSlash(me, op, idx, a); break;
       case "insectArmor": me.buff = a.mult ?? null; me.armor = a.hp ?? 500; break;
-      case "beam": me.beam = { ab: a, ang, t: Infinity, tick: a.warmupMs ?? 450 }; break;
+      case "beam": me.beam = { ab: a, ang, t: a.id === "pierce" ? 8000 + (a.warmupMs ?? 450) : Infinity, tick: a.warmupMs ?? 450 }; break;
       case "fist": case "ratio":
         if (a.type === "ratio") this.fx.push({ kind: "ratio", x: op.x, y: op.y, r: 34, color: "", life: 750, max: 750, ang: ang + 0.5, seed: Math.random() });
         if (a.type === "fist") this.fx.push({ kind: "divergentFist", x: me.x + Math.cos(ang) * 24, y: me.y + Math.sin(ang) * 24, r: 50, color: "", life: 850, max: 850, ang });
@@ -825,8 +847,9 @@ export class Battle {
   throwGavel(me: Fighter, op: Fighter, idx: number, a: Ability) {
     if (!this.ready(me, a)) return false;
     this.use(me, a, a.cost ?? 0);
-    const speed = a.speed ?? 12, ang = this.leadAngle(me, op, speed);
-    this.projs.push({ x: me.x, y: me.y, vx: Math.cos(ang) * speed, vy: Math.sin(ang) * speed, dmg: (a.damage ?? 70) * this.dm(me), owner: idx, kind: "gavel", life: a.projectileLifeMs ?? 1100, ab: a, name: a.name });
+    if (this.projs.some((p) => p.kind === "gavel" && this.f[p.owner] === me)) return false;
+    const speed = a.speed ?? 12, ang = this.leadAngle(me, op, speed), hand = Math.atan2(op.y - me.y, op.x - me.x);
+    this.projs.push({ x: me.x + Math.cos(hand) * 22, y: me.y + Math.sin(hand) * 22, vx: Math.cos(ang) * speed, vy: Math.sin(ang) * speed, dmg: (a.damage ?? 70) * this.dm(me), owner: idx, kind: "gavel", life: a.projectileLifeMs ?? 1100, ab: a, name: a.name });
     this.say(`${me.def.name.split(" ")[0]}: ${a.name}`); return true;
   }
   drawThrownGavel(c: CanvasRenderingContext2D, p: Proj) {
@@ -888,7 +911,8 @@ export class Battle {
       return;
     }
     if (me.yz && yorozuMelee(this, me, op)) { if (op.hp < before) op.beam = null; return; }
-    if (me.def.abilities.some((a) => a.type === "starRage")) this.stellarPunch(me, op);
+    if (me.def.abilities.some((a) => a.type === "starRage") && !this.isPlayer(me) && me.starT <= 0 && me.en > me.def.energy * 0.25) { me.starT = 8000; this.say(`${me.def.name.split(" ")[0]}: Fúria Estelar`); }
+    if (me.starT > 0) this.stellarPunch(me, op);
     else if (me.blade > 0) { const bl = me.def.abilities.find((x) => x.type === "bloodBlade"); this.fx.push({ kind: "slash", x: op.x, y: op.y, r: 22, color: "#fff", life: 200, max: 200, ang: ang + 1.2 }); const b4 = op.hp; this.punch(me, op, (bl?.damage ?? 45) * this.dm(me), bl?.name ?? "Lâmina de Sangue"); this.applyPoison(op, bl, b4 - op.hp); }
     else if (me.mg && me.mg.weapon > 0) { const ar = me.def.abilities.find((x) => x.type === "mgArmory"); this.fx.push({ kind: "slash", x: op.x, y: op.y, r: 22, color: "#fff", life: 200, max: 200, ang: ang + 1.2 }); this.punch(me, op, (ar?.damage ?? 55) * this.dm(me), "Espada das Sombras"); }
     else this.punch(me, op, (me.def.weapon && me.weaponHp > 0 ? me.def.weapon.damage ?? me.def.taijutsu.damage : me.def.taijutsu.damage) * this.dm(me), me.def.id === "toji" ? "Lança Invertida do Céu" : me.def.id === "nanami" && me.weaponHp > 0 ? "Cutelo" : "Taijutsu", {}, me.def.id === "toji");
@@ -941,7 +965,7 @@ export class Battle {
       if (p.ab?.maxRange !== undefined && p.originX !== undefined && p.originY !== undefined && Math.hypot(p.x - p.originX, p.y - p.originY) > p.ab.maxRange) p.life = 0;
       if (p.life <= 0) continue;
       const t = this.f[1 - p.owner];
-      if (!t) continue;
+      if (!t || p.hit) continue;
       const hr = p.kind === "gavel" ? p.ab?.hitRadius ?? 14 : p.kind === "yzBlade" || p.kind === "yzLance" ? p.ab?.hitRadius ?? 10 : p.kind === "yzChain" ? p.ab?.hitRadius ?? 9 : p.kind === "sound" || p.kind === "electromagnetic" ? p.ab?.hitRadius ?? 10 : p.kind === "net" || p.kind === "fuga" || p.kind === "world" ? p.ab?.hitRadius ?? 12 : p.kind === "tojiChain" ? p.ab?.hitRadius ?? 12 : p.kind === "meteor" || p.kind === "disc" || p.kind === "chain" ? p.ab?.hitRadius ?? 6 : p.kind === "plasma" ? p.ab?.hitRadius ?? 34 : p.kind === "ball" ? 6 : p.kind === "purple" ? 34 : p.kind === "uzumaki" ? 30 : p.kind === "sphere" ? 26 : p.kind === "red" ? 12 : p.kind === "construct" ? 9 : 5;
       if (t.inf > 0 && !p.sure && p.ab?.type !== "chainSpear" && p.kind !== "purple" && p.kind !== "sphere" && p.kind !== "world" && Math.hypot(p.x - t.x, p.y - t.y) < 46) { p.vx *= 0.75; p.vy *= 0.75; if (Math.hypot(p.vx, p.vy) < 0.3) p.life = 0; continue; }
       if (!megumiHidden(t) && Math.abs(p.x - t.x) < SIZE / 2 + hr && Math.abs(p.y - t.y) < SIZE / 2 + hr) {
@@ -975,7 +999,7 @@ export class Battle {
           this.fx.push({ kind: "crater", x: t.x, y: t.y, r: 22, color: "", life: 1800, max: 1800 });
         }
         if (p.kind === "electric" || p.kind === "electromagnetic") { t.stun = Math.max(t.stun, p.ab?.stunMs ?? 350); this.fx.push({ kind: "electric", x: t.x, y: t.y, r: 50, color: "", life: 550, max: 550 }); }
-        p.life = 0;
+        if (PASS_THROUGH.has(p.kind)) p.hit = true; else p.life = 0;
         if (p.kind === "disc" || p.kind === "chain") this.fx.push({ kind: "slash", x: t.x, y: t.y, r: 24, color: "#fff", life: 220, max: 220, ang: Math.atan2(p.vy, p.vx) + 1.2 });
         if (p.kind === "gavel") { t.stun = Math.max(t.stun, p.ab?.stunMs ?? 0); const ga = Math.atan2(p.vy, p.vx); t.vx += Math.cos(ga) * (p.ab?.knockback ?? 5); t.vy += Math.sin(ga) * (p.ab?.knockback ?? 5); }
         if (p.kind === "meteor") { t.stun = Math.max(t.stun, p.ab?.stunMs ?? 0); this.fx.push({ kind: "boom", x: t.x, y: t.y, r: 26, color: "rgba(127,29,29,0.6)", life: 300, max: 300 }); }
@@ -1034,7 +1058,7 @@ export class Battle {
     me.en = Math.min(this.maxEn(me), me.en + d.energyRegen * dt / 1000);
     for (const k in me.cd) me.cd[k] = (me.cd[k] ?? 0) - dt;
     me.retreatT = Math.max(0, me.retreatT - dt); me.exchangeLoss = Math.max(0, me.exchangeLoss - dt * 0.018);
-    me.metal -= dt; me.blade -= dt; me.meleeCd -= dt; me.inf -= dt; me.simple -= dt; me.dashAtk -= dt; me.flash -= dt; me.strafeCd -= dt; me.sealed = Math.max(0, me.sealed - dt); me.executioner = Math.max(0, me.executioner - dt); me.gavelBig = Math.max(0, me.gavelBig - dt); me.gavelExt = Math.max(0, me.gavelExt - dt);
+    me.metal -= dt; me.blade -= dt; me.meleeCd -= dt; me.inf -= dt; me.simple -= dt; me.dashAtk -= dt; me.flash -= dt; me.strafeCd -= dt; me.sealed = Math.max(0, me.sealed - dt); me.executioner = Math.max(0, me.executioner - dt); me.gavelBig = Math.max(0, me.gavelBig - dt); me.starT = Math.max(0, me.starT - dt); me.gavelExt = Math.max(0, me.gavelExt - dt);
     if (me.jackpot > 0) this.heal(me, dt); // no jackpot o corpo cura sozinho, mesmo em movimento
     else if ((!manual || (this.input.heal && !this.input.x && !this.input.y && !this.input.attack)) && this.wantsHeal(me) && this.healFree(me, op)) {
       // Técnica Reversa: só livre e parado
@@ -1108,7 +1132,7 @@ export class Battle {
       const b = me.beam; b.t -= dt; b.tick -= dt;
       const target = Math.atan2(dy, dx);
       // na Onda Sonora o jogador mira com o direcional; a IA mira no oponente
-      const aim = manual && b.ab.type === "soundwave" && (this.input.x || this.input.y) ? Math.atan2(this.input.y, this.input.x) : target;
+      const aim = manual && (this.input.x || this.input.y) ? Math.atan2(this.input.y, this.input.x) : target;
       let diff = aim - b.ang;
       diff = Math.atan2(Math.sin(diff), Math.cos(diff)); b.ang += Math.max(-(b.ab.turnSpeed ?? 0.006), Math.min(b.ab.turnSpeed ?? 0.006, diff)) * dt / 16;
       me.vx *= 0.7; me.vy *= 0.7;
@@ -2465,7 +2489,7 @@ export class Battle {
       if (f.casting?.ab.type === "plasmaJet" || f.casting?.ab.type === "fuga") this.drawCharge(c, f);
       if (f.blade > 0) this.drawBloodBlade(c, f, this.f[1 - this.f.indexOf(f)] as Fighter);
       if (f.def.id === "kashimo" && f.weaponHp > 0) this.drawKashimoStaff(c, f);
-      if (f.def.id === "higuruma") { this.drawJudgeman(c, f); this.drawGavel(c, f); }
+      if (f.def.id === "higuruma") { this.drawJudgeman(c, f); if (!this.projs.some((p) => p.kind === "gavel" && this.f[p.owner] === f)) this.drawGavel(c, f); }
       if (f.def.id === "kashimo" && f.amber <= 0 && f.charges > 0) this.drawElectric(c, f.x, f.y, 25);
       if (f.jackpot > 0) this.drawJackpotAura(c, f);
       if (f.simple > 0) { if (f.wicker) this.drawWicker(c, f); else this.drawSimple(c, f); }
