@@ -652,7 +652,7 @@
   },
   "hakari": {
     "doors": {
-      "cost": 40,
+      "cost": 80,
       "impactDamage": 70,
       "pushDamage": 35,
       "blockDurationMs": 2600,
@@ -674,7 +674,7 @@
       "hitRange": 320
     },
     "ball": {
-      "damage": 30,
+      "damage": 50,
       "cost": 8,
       "speed": 11,
       "projectileLifeMs": 1400,
@@ -1151,11 +1151,6 @@
     "overtime": {
       "cost": 0,
       "once": true,
-      "mult": {
-        "damage": 1.5,
-        "speed": 1.2,
-        "reflex": 1.2
-      },
       "timing": {
         "prepMs": 0,
         "launchMs": 0,
